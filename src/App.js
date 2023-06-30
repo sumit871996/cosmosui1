@@ -7,12 +7,12 @@ import { Grommet } from 'grommet';
 import { hpe } from 'grommet-theme-hpe';
 import AppRoutes from './Routes/AppRoutes';
 import { AppFooter } from './Components/Footer/AppFooter';
-import AppNavbar from './Components/NavBar/AppNavbar';
+import NavBar from './Components/NavBar/NavBar';
 
 function App() {
   return (
     <Grommet theme={hpe} full>
-      <AppNavbar />
+      <NavBar />
       <AppRoutes />
       <AppFooter />
     </Grommet>

@@ -19,30 +19,25 @@ const LoginPage = () => {
     email: '',
     password: '',
   });
-  const navigate = useNavigate();
   const size = useContext(ResponsiveContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState();
-
+  const navigate = useNavigate();
   const handleLogin = (event) => {
     event.preventDefault();
-    if (
-      (username === 'hpesuperadmin@fgi.com' && password === 'hpe') ||
-      (username === 'hpeadmin@fgi.com' && password === 'hpe') ||
-      (username === 'hpeuser@fgi.com' && password === 'hpe')
-    ) {
+    if (username === 'hpeuser@cosmos.com' && password === 'hpe') {
       // set login state to local storage
       sessionStorage.setItem('user', username); // store the user in seesion storage.
       // navigate to another page
-      navigate('/home');
+      navigate('/data/dashboard');
     } else {
       setErrorMessage('Invalid username or password');
     }
     LoginService.login(formValues)
       .then(() => {
         sessionStorage.setItem('user', username);
-        navigate('/home');
+        navigate('/data/dashboard');
       })
       .catch((error) => {
         setErrorMessage('Invalid username or password');
