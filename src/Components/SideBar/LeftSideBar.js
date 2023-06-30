@@ -11,17 +11,17 @@ const LeftSideBar = (props) => {
   const size = useContext(ResponsiveContext);
   const searchSuggestions = dataMigrationOptions;
   const [suggestions, setSuggestions] = useState(searchSuggestions);
-  const [selected, setSelected] = useState(dataMigrationOptions[0]);
+  const [selected, setSelected] = useState(dataMigrationOptions[0].name);
   const navigateFunction = () => {
     props.setSelected(false);
     props.onExit(false);
-    navigate(`/dashboard/Solution/${dataMigrationOptions[0]}`);
+    navigate(`/dashboard/Solution/${dataMigrationOptions[0].name}`);
   };
   return (
     <Box
       align='start'
       round='none'
-      width={!['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '150px'}
+      width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
       border='right'
       height='100%'
     >
@@ -52,13 +52,15 @@ const LeftSideBar = (props) => {
           setSuggestions={setSuggestions}
         />
       </Box>
-      {suggestions.map((element) => {
+      {dataMigrationOptions.map((element) => {
         return (
           <LeftSideBarElement
-            dataMigrationOptions={element}
+            dataMigrationOptions={element.name}
             selected={selected}
             setSelected={setSelected}
-          />
+          >
+            {element.logo}
+          </LeftSideBarElement>
         );
       })}
     </Box>

@@ -45,12 +45,12 @@ export const SearchBox = ({ ...props }) => {
     <Box height='30px' pad={{ top: '10px', bottom: '40px' }}>
       <StyledTextInput
         icon={<SearchIcon id='search-icon' style={{ justifyItems: 'start' }} />}
-        placeholder='Search'
+        placeholder='Search Toolbox'
         value={value}
-        // suggestions={props.suggestions}
+        suggestions={searchSuggestions}
         onChange={onChange}
         type='search'
-        // {...props}
+        {...props}
       />
     </Box>
   );

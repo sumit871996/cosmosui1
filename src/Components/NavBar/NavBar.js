@@ -26,6 +26,10 @@ import { useContext } from 'react';
 const NavBar = () => {
   const size = useContext(ResponsiveContext);
   const navigate = useNavigate();
+
+  const getInitials = () => {
+    return 'US';
+  };
   return (
     <Header
       fill='horizontal'
@@ -38,9 +42,6 @@ const NavBar = () => {
       <Box direction='row-responsive' align='center' justify='center' flex>
         <Box
           onClick={() => navigate('/dashboard')}
-          margin='0px'
-          pad='0px'
-          height='100%'
           width='xsmall'
           justify='center'
         >
@@ -61,7 +62,7 @@ const NavBar = () => {
             label='Home'
             color='black'
             weight='bold'
-            size='small'
+            size='medium'
             pad={{ horizontal: 'small' }}
             margin='0px'
             onClick={() => navigate('/home')}
@@ -70,7 +71,7 @@ const NavBar = () => {
             label='Contact'
             color='black'
             weight='bold'
-            size='small'
+            size='medium'
             pad={{ horizontal: 'small' }}
             margin='0px'
             onClick={() => navigate('/contact')}
@@ -79,7 +80,7 @@ const NavBar = () => {
             label='About'
             color='black'
             weight='bold'
-            size='small'
+            size='medium'
             pad={{ horizontal: 'small' }}
             margin='0px'
             onClick={() => navigate('/about')}
@@ -102,8 +103,9 @@ const NavBar = () => {
           <Avatar
             alignSelf='center'
             onClick={() => navigate('/profile')}
-            style={{ backgroundColor: 'cyan' }}
-            size='30px'
+            size='42px'
+            color='black'
+            src={require('../../Assets/cosmos/MSD2.jpg')}
           >
             {/* {getInitials()} */}
           </Avatar>

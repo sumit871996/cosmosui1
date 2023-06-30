@@ -16,7 +16,13 @@ const DataMigrationWindow = (props) => {
       <LeftSideBar />
 
       <Box direction='column' justify='center' align='center' flex>
-        <Box fill='horizontal' border='bottom' justify='center' align='center'>
+        <Box
+          background='#00739D'
+          fill='horizontal'
+          border='bottom'
+          justify='center'
+          align='start'
+        >
           menubar
         </Box>
         <Box width='100%' direction='row' fill='vertical'>

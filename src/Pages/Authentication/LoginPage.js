@@ -63,7 +63,7 @@ const LoginPage = () => {
           <Heading level={2} margin='none'>
             Sign In
           </Heading>
-          <Text>to FGI Account</Text>
+          <Text>to Cosmos Account</Text>
         </Header>
         <Box
           // Padding used to prevent focus from being cutoff
@@ -78,7 +78,12 @@ const LoginPage = () => {
             }}
             onSubmit={handleLogin}
           >
-            <FormField>
+            <FormField
+              label='Email'
+              htmlFor='email-sign-in'
+              name='email'
+              required={{ indicator: false }}
+            >
               <TextInput
                 id='email-sign-in'
                 name='email'
