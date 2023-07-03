@@ -1,6 +1,6 @@
-import { Database, DocumentTransfer, Webcam } from 'grommet-icons';
+import { Database, DocumentTransfer } from 'grommet-icons';
 
-const dataCardElement = [
+const cdcCardElements = [
   {
     title: 'Data Migration',
     description: 'This will migrate data',
@@ -14,7 +14,7 @@ const dataCardElement = [
   {
     title: 'CDC',
     description: 'This is CDC',
-    logo: <Webcam color='#00567A' size='xxlarge' />,
+    logo: <Database color='#00567A' size='xxlarge' />,
   },
   {
     title: 'Data Migration',
@@ -23,4 +23,4 @@ const dataCardElement = [
   },
 ];
 
-export default dataCardElement;
+export default cdcCardElements;

@@ -14,14 +14,6 @@ const AppRoutes = () => {
       <Route element={<LoginPage />} path='/'></Route>
       <Route
         element={
-          <Dashboard>
-            <DataMigrationWindow />
-          </Dashboard>
-        }
-        path='/Data/Data Migration'
-      />
-      <Route
-        element={
           <Dashboard
             selectedDashboard={selectedDashboard}
             setSelectedDashboard={setSelectedDashboard}
@@ -34,6 +26,18 @@ const AppRoutes = () => {
 
       <Route
         element={
+          <Dashboard>
+            <DataMigrationWindow
+              selectedDashboard={selectedDashboard}
+              setSelectedDashboard={setSelectedDashboard}
+            />
+          </Dashboard>
+        }
+        path='/Data/Data Migration'
+      />
+
+      <Route
+        element={
           <Dashboard
             selectedDashboard={selectedDashboard}
             setSelectedDashboard={setSelectedDashboard}
@@ -42,6 +46,17 @@ const AppRoutes = () => {
           </Dashboard>
         }
         path='/AI/ML/dashboard'
+      />
+      <Route
+        element={
+          <Dashboard
+            selectedDashboard={selectedDashboard}
+            setSelectedDashboard={setSelectedDashboard}
+          >
+            <AimlDashboard />
+          </Dashboard>
+        }
+        path='/Visualization/dashboard'
       />
     </Routes>
   );
