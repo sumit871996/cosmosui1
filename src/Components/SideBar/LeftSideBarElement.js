@@ -13,7 +13,7 @@ const LeftSideBarElement = (props) => {
       pad='small'
       align='center'
       style={{
-        border: props.selected == props.dataMigrationOptions && 'bottom',
+        border: props.selected == props.options && 'bottom',
       }}
       // justify='between'
     >
@@ -26,15 +26,15 @@ const LeftSideBarElement = (props) => {
         }}
       >
         <Text weight='bold' color='#00567A'>
-          {props.dataMigrationOptions}
+          {props.options}
         </Text>
       </Box>
       <Box
         onClick={() => {
-          props.setSelected(props.dataMigrationOptions);
+          props.setSelected(props.options);
         }}
       >
-        <Add color='black' />
+        <Add onClick={props.addToolbarElement} color='black' />
       </Box>
     </Box>
   );
