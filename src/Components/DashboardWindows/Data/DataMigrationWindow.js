@@ -7,6 +7,7 @@ import {
   Button,
   ResponsiveContext,
 } from 'grommet';
+import Chatbot from 'src/components/Chatbot/Chatbot';
 import { dataMigrationOptions } from '../../../Config/dataMigrationOptions';
 import JointPage from '../../../Pages/JointPage';
 import LeftSideBar from '../../SideBar/LeftSideBar';
@@ -33,14 +34,14 @@ const DataMigrationWindow = () => {
   };
   return (
     <Box direction='row-responsive' fill='horizontal' flex>
-      <LeftSideBar
+      {/* <LeftSideBar
         addToolbarElement={addToolbarElement}
         sidebaroptions={dataMigrationOptions}
         title='Data Migration'
-      />
+      /> */}
 
       <Box direction='column' justify='center' align='center' flex>
-        <Box
+        {/* <Box
           background='#00739D'
           fill='horizontal'
           border='bottom'
@@ -76,6 +77,9 @@ const DataMigrationWindow = () => {
             <Text>Destination</Text>
             <JointPage title='Destination 1' />
           </Box>
+        </Box> */}
+        <Box className='chatbot' height='400px'>
+          <Chatbot />
         </Box>
       </Box>
 

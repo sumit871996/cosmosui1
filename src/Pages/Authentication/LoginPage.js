@@ -12,7 +12,7 @@ import {
   TextInput,
 } from 'grommet';
 
-import LoginService from '../../Services/Authentication/LoginService';
+import LoginService from '../../services/Authentication/LoginService';
 
 const LoginPage = () => {
   const [formValues, setFormValues] = React.useState({

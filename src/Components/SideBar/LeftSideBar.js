@@ -26,9 +26,11 @@ const LeftSideBar = (props) => {
 
   return (
     <Box
+      className='side-bar'
       align='start'
       round='none'
-      width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
+      // width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
+      width='100%'
       border='all'
       height='100%'
     >
@@ -61,7 +63,7 @@ const LeftSideBar = (props) => {
         />
       </Box>
 
-      <LeftSideBarElement
+      {/* <LeftSideBarElement
         options={'Source 1'}
         addToolbarElement={props.addToolbarElement}
         selected={selected}
@@ -76,7 +78,7 @@ const LeftSideBar = (props) => {
         setSelected={setSelected}
       >
         <Target color='#00567A' />
-      </LeftSideBarElement>
+      </LeftSideBarElement> */}
     </Box>
   );
 };
