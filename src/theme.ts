@@ -11,11 +11,11 @@ file, You can obtain one at https://www.jointjs.com/license
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
 
 
-export const MAX_PORT_COUNT = 3;
+export const MAX_PORT_COUNT = 1;
 export const FONT_FAMILY = 'realist, Helvetica, Arial, sans-serif';
 export const OUT_PORT_HEIGHT = 28;
-export const OUT_PORT_WIDTH = 96;
-export const OUT_PORT_LABEL = 'out';
+export const OUT_PORT_WIDTH = 120;
+export const OUT_PORT_LABEL = 'connection';
 export const PORT_BORDER_RADIUS = 16;
 export const GRID_SIZE = 8;
 export const PADDING_S = GRID_SIZE;
@@ -26,7 +26,7 @@ export const BACKGROUND_COLOR = '#F9F9F9';
 export const SECONDARY_BACKGROUND_COLOR = '#FCFCFC';
 export const LIGHT_COLOR = '#FFFFFF';
 export const DARK_COLOR = '#212121';
-export const MAIN_COLOR = '#0057FF';
+export const MAIN_COLOR = '#FFFFFF';
 export const LINE_WIDTH = 2;
 export const STENCIL_WIDTH = 100;
 export const ZOOM_MAX = 3;

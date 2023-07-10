@@ -130,10 +130,10 @@ const Chatbot = (): ReactElement => {
             <Box ref={elementRef} direction='row' className="rappid-scope chatbot">
                 <Box ref={toolbarRef} ></Box>
                 <Box className="side-bar" width='20%'>
-                <LeftSideBar
-        addToolbarElement={addToolbarElement}
-        sidebaroptions={dataMigrationOptions}
-        title='Data Migration'
+                <LeftSideBar className="side-bar"
+                addToolbarElement={addToolbarElement}
+                sidebaroptions={dataMigrationOptions}
+                title='Data Migration'
       />
                     {/* <div className="toggle-bar">
                         <div onClick={toggleStencil}

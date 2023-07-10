@@ -83,7 +83,7 @@ const FlowchartEnd = dia.Element.define(ShapeTypesEnum.FLOWCHART_END, {
         },
         icon: {
             d: 'M 5 -8.45 L 6.41 -7.04 L 3 -3.635 L 1.59 -5.04 Z M -4.5 3.95 L -1 3.95 L -1 -1.63 L -6.41 -7.04 L -5 -8.45 L 1 -2.45 L 1 3.95 L 4.5 3.95 L 0 8.45 Z',
-            fill: '#FFFFFF',
+            fill: '#212121',
             transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
         },
         label: {

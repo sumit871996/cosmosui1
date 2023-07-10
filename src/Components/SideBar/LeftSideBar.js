@@ -1,5 +1,4 @@
 import { Box, ResponsiveContext, Button, Text } from 'grommet';
-import LeftSideBarElement from './LeftSideBarElement';
 import { useContext, useState, React } from 'react';
 import { SearchBox } from './SearchBox';
 import { useNavigate } from 'react-router-dom';

@@ -22,7 +22,8 @@ export const stencilConfig = {
     shapes: [
         //     {
         //     name: 'FlowchartStart'
-        // }, {
+        // }, 
+        // {
         //     name: 'FlowchartEnd'
         // }, 
         {
@@ -33,7 +34,7 @@ export const stencilConfig = {
             }
         },
         {
-            name: 'Message',
+            name: 'FlowchartEnd',
             attrs: {
                 label: { text: 'Destination' },
                 icon: { xlinkHref: ENTITY_ICON }
