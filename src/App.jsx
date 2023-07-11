@@ -6,9 +6,9 @@ import { Box, Button, ResponsiveContext, Text } from 'grommet';
 import { Grommet } from 'grommet';
 
 import { hpe } from 'grommet-theme-hpe';
-import AppRoutes from './Routes/AppRoutes';
-import { AppFooter } from './components/Footer/AppFooter';
-import NavBar from './components/NavBar/NavBar';
+import AppRoutes from './routes/AppRoutes';
+import { AppFooter } from './components/footer/AppFooter';
+import NavBar from './components/navBar/NavBar';
 import { useContext } from 'react';
 const App = () => {
     return (

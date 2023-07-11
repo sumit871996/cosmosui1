@@ -1,5 +1,5 @@
 import axios from 'axios';
-import BACKEND_URL from '../../Config/WebConfig';
+import BACKEND_URL from '../../config/WebConfig';
 axios.defaults.WebConfig = BACKEND_URL;
 
 function login(data) {

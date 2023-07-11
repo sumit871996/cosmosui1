@@ -10,9 +10,9 @@ import {
 } from 'grommet';
 import { Menu } from 'grommet-icons';
 
-import { getURL } from '../../Utils/commonUtils';
+import { getURL } from '../../utils/commonUtils';
 import { useState } from 'react';
-import LeftSideBar from '../SideBar/LeftSideBar';
+import LeftSideBar from '../sideBar/LeftSideBar';
 import { NavigationButton } from './NavigationButton';
 
 const BreadCrumb = (props) => {

@@ -1,14 +1,14 @@
 import { Box, ResponsiveContext } from 'grommet';
 import { React, useContext, useEffect, useState } from 'react';
-import LeftSideBar from '../../components/SideBar/LeftSideBar';
-import BreadCrums from '../../components/BreadCrumb/BreadCrumb';
+import LeftSideBar from '../../components/sideBar/LeftSideBar';
+import BreadCrums from '../../components/breadCrumb/BreadCrumb';
 import { Button, Layer } from 'grommet';
-import { getURL } from '../../Utils/commonUtils';
+import { getURL } from '../../utils/commonUtils';
 import { useLocation } from 'react-router-dom';
-import DashboardWindow from '../../components/DashboardWindows/Data/DataMigrationWindow';
-import { dept } from '../../Config/dataMigrationOptions';
-import ToolBar from '../../components/ToolBar/ToolBar';
-import DataMigrationWindow from '../../components/DashboardWindows/Data/DataMigrationWindow';
+import DashboardWindow from '../../components/dashboardWindows/data/DataMigrationWindow';
+import { dept } from '../../config/dataMigrationOptions';
+import ToolBar from '../../components/toolBar/ToolBar';
+import DataMigrationWindow from '../../components/dashboardWindows/data/DataMigrationWindow';
 import DashboardContext from './DashboardContext';
 import Chatbot from 'src/components/Chatbot/Chatbot';
 const Dashboard = (props) => {

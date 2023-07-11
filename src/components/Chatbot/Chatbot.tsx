@@ -10,12 +10,12 @@ import { EventBusService } from 'src/services/event-bus.service';
 import { SharedEvents } from 'src/rappid/controller';
 import { importGraphFromJSON, loadStencilShapes, zoomToFit } from 'src/rappid/actions';
 import { STENCIL_WIDTH } from 'src/theme';
-import { dataMigrationOptions } from 'src/Config/dataMigrationOptions';
+import { dataMigrationOptions } from 'src/config/dataMigrationOptions';
 
 import exampleGraphJSON from 'src/rappid/config/example-graph.json';
-import LeftSideBar from '../SideBar/LeftSideBar';
+import LeftSideBar from '../sideBar/LeftSideBar';
 import { FormClose } from 'grommet-icons';
-import TabBar from '../DashboardWindows/TabBar';
+import TabBar from '../dashboardWindows/TabBar';
 
 const Chatbot = (): ReactElement => {
 

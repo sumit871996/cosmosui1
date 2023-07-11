@@ -7,11 +7,11 @@ import {
   Button,
   ResponsiveContext,
 } from 'grommet';
-import { dataTransformationOptions } from '../../../Config/dataTransformationOptions';
-import LeftSideBar from '../../SideBar/LeftSideBar';
-import RightSideBar from '../../SideBar/RightSideBar';
+import { dataTransformationOptions } from '../../../config/dataTransformationOptions';
+import LeftSideBar from '../../sideBar/LeftSideBar';
+import RightSideBar from '../../sideBar/RightSideBar';
 import { useContext } from 'react';
-import DashboardContext from '../../../Pages/Dashboards/DashboardContext';
+import DashboardContext from '../../../pages/dashboards/DashboardContext';
 const DataTransformationWindow = () => {
   const ctx = useContext(DashboardContext);
   const size = useContext(ResponsiveContext);

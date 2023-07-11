@@ -554,27 +554,27 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.FLOWCHART_END, {
             y: 24,
             xlinkHref: 'https://image.flaticon.com/icons/svg/151/151795.svg'
         },
-        // portAddButton: {
-        //     cursor: 'pointer',
-        //     fill: MAIN_COLOR,
-        //     event: 'element:port:add',
-        //     transform: 'translate(calc(w - 28), calc(h))',
-        //     dataTooltip: 'Add Output Port',
-        //     dataTooltipPosition: 'top'
-        // },
-        // portAddButtonBody: {
-        //     width: ADD_PORT_SIZE,
-        //     height: ADD_PORT_SIZE,
-        //     rx: PORT_BORDER_RADIUS,
-        //     ry: PORT_BORDER_RADIUS,
-        //     x: -ADD_PORT_SIZE / 2,
-        //     y: -ADD_PORT_SIZE / 2,
-        // },
-        // portAddButtonIcon: {
-        //     d: 'M -4 0 4 0 M 0 -4 0 4',
-        //     stroke: '#FFFFFF',
-        //     strokeWidth: LINE_WIDTH
-        // }
+        portAddButton: {
+            cursor: 'pointer',
+            fill: MAIN_COLOR,
+            event: 'element:port:add',
+            transform: 'translate(calc(w - 28), calc(h))',
+            dataTooltip: 'Add Output Port',
+            dataTooltipPosition: 'top'
+        },
+        portAddButtonBody: {
+            width: ADD_PORT_SIZE,
+            height: ADD_PORT_SIZE,
+            rx: PORT_BORDER_RADIUS,
+            ry: PORT_BORDER_RADIUS,
+            x: -ADD_PORT_SIZE / 2,
+            y: -ADD_PORT_SIZE / 2,
+        },
+        portAddButtonIcon: {
+            d: 'M -4 0 4 0 M 0 -4 0 4',
+            stroke: '#FFFFFF',
+            strokeWidth: LINE_WIDTH
+        }
     }
 }, {
 

@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { Box, Button, Grid } from 'grommet';
-import CardDashboard from '../../Cards/CardDashboard';
+import CardDashboard from '../../cards/CardDashboard';
 import dataCardElement from './dataCardElements';
 const DataDashboard = () => {
   return (

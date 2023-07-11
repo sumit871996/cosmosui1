@@ -4,7 +4,7 @@ import { Box, Text, Button } from 'grommet';
 import { AppsRounded } from 'grommet-icons';
 import toolbarElemnts from './toolbarElements';
 import { useNavigate } from 'react-router-dom';
-import DashboardContext from '../../Pages/Dashboards/DashboardContext';
+import DashboardContext from '../../pages/dashboards/DashboardContext';
 const ToolBar = () => {
   const size = React.useContext(ResponsiveContext);
   const ctx = useContext(DashboardContext);

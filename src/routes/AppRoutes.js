@@ -1,14 +1,14 @@
 import { Box } from 'grommet';
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-import LoginPage from '../Pages/Authentication/LoginPage';
-import Dashboard from '../Pages/Dashboards/Dashboard';
+import LoginPage from '../pages/authentication/LoginPage';
+import Dashboard from '../pages/dashboards/Dashboard';
 
-import DataTransformationWindow from '../components/DashboardWindows/Data/DataTransformationWindow';
-import DataMigrationWindow from '../components/DashboardWindows/Data/DataMigrationWindow';
-import DataDashboard from '../components/DashboardWindows/Data/DataDashboard';
-import AimlDashboard from '../components/DashboardWindows/AIML/AimlDashboard';
-import JointPage from '../Pages/JointPage';
+import DataTransformationWindow from '../components/dashboardWindows/data/DataTransformationWindow';
+import DataMigrationWindow from '../components/dashboardWindows/data/DataMigrationWindow';
+import DataDashboard from '../components/dashboardWindows/data/DataDashboard';
+import AimlDashboard from '../components/dashboardWindows/aiml/AimlDashboard';
+import JointPage from '../pages/JointPage';
 const AppRoutes = () => {
   return (
     <Routes>

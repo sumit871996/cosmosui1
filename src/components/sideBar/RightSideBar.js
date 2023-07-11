@@ -9,7 +9,7 @@ import {
 } from 'grommet';
 import LeftSideBarElement from './LeftSideBarElement';
 import { useContext, useState, React } from 'react';
-import { rightSideBarOptions } from '../../Config/RightSideBarOptions/rightSideBarOptions';
+import { rightSideBarOptions } from '../../config/rightSideBarOptions/rightSideBarOptions';
 import { SearchBox } from './SearchBox';
 import { useNavigate } from 'react-router-dom';
 import { Previous, Next, CatalogOption, Folder, FormDown } from 'grommet-icons';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, ResponsiveContext } from 'grommet';
 import { Previous, Next } from 'grommet-icons';
 import { useNavigate } from 'react-router-dom';
-import { dataMigrationOptions } from '../../Config/dataMigrationOptions';
+import { dataMigrationOptions } from '../../config/dataMigrationOptions';
 
 export const NavigationButton = (props) => {
   const size = React.useContext(ResponsiveContext);

@@ -8,12 +8,12 @@ import {
   ResponsiveContext,
 } from 'grommet';
 import Chatbot from 'src/components/Chatbot/Chatbot';
-import { dataMigrationOptions } from '../../../Config/dataMigrationOptions';
-import JointPage from '../../../Pages/JointPage';
-import LeftSideBar from '../../SideBar/LeftSideBar';
-import RightSideBar from '../../SideBar/RightSideBar';
+import { dataMigrationOptions } from '../../../config/dataMigrationOptions';
+import JointPage from '../../../pages/JointPage';
+import LeftSideBar from '../../sideBar/LeftSideBar';
+import RightSideBar from '../../sideBar/RightSideBar';
 import { useContext, useState } from 'react';
-import DashboardContext from '../../../Pages/Dashboards/DashboardContext';
+import DashboardContext from '../../../pages/dashboards/DashboardContext';
 import { Close, FormClose } from 'grommet-icons';
 const DataMigrationWindow = () => {
   const ctx = useContext(DashboardContext);
