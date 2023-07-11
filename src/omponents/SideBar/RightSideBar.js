@@ -110,13 +110,20 @@ const RightSideBar = (props) => {
           <Text color='#00567A'>Connection managers</Text>
         </Box>
       </Box>
-      <Accordion color='#00567A' fill='horizontal'>
-        <AccordionPanel label='Packages'>
-          <Box background='light-2'>
-            <Text color='#00567A'>Create package</Text>
-          </Box>
-        </AccordionPanel>
-      </Accordion>
+      <Menu
+        label='Packages'
+        color='#00567A'
+        // dropAlign='bottom: "right" | "right"'
+        items={[
+          {
+            label: (
+              <Box style={{ color: '#00567A' }} alignSelf='center'>
+                Create packages
+              </Box>
+            ),
+          },
+        ]}
+      />
       {/* {rightSideBarOptions.map((element) => {
         return ( */}
       {/* <RightSideBarElement

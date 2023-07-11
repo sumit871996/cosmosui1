@@ -2,6 +2,7 @@ import { Box, ResponsiveContext, Button, Text } from 'grommet';
 import { useContext, useState, React } from 'react';
 import { SearchBox } from './SearchBox';
 import { useNavigate } from 'react-router-dom';
+import LeftSideBarElement from './LeftSideBarElement';
 import { Previous, Next, Target, Layer } from 'grommet-icons';
 
 const LeftSideBar = (props) => {
@@ -25,7 +26,7 @@ const LeftSideBar = (props) => {
 
   return (
     <Box
-      className='side-bar'
+      // className='side-bar'
       align='start'
       round='none'
       // width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}

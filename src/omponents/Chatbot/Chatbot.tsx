@@ -14,6 +14,8 @@ import { dataMigrationOptions } from 'src/Config/dataMigrationOptions';
 
 import exampleGraphJSON from 'src/rappid/config/example-graph.json';
 import LeftSideBar from '../SideBar/LeftSideBar';
+import { FormClose } from 'grommet-icons';
+import TabBar from '../DashboardWindows/TabBar';
 
 const Chatbot = (): ReactElement => {
 
@@ -29,12 +31,22 @@ const Chatbot = (): ReactElement => {
     const [jsonEditorOpened, setJsonEditorOpened] = useState(true);
     const [fileJSON, setFileJSON] = useState(null);
     const [subscriptions] = useState(new Subscription());
-  const [toolbarProjects, setToolbarProjects] = useState([]);
 
-
+    const [toolbarProjects, setToolbarProjects] = useState([]);
+  
     const addToolbarElement = () => {
         setToolbarProjects((project) => [...project, 'Project 1']);
       };
+
+      const removeToolbarElement =(): void =>{
+        setToolbarProjects((project) => {
+            let a = [];
+            for (let i = 0; i < project.length - 1; i++) {
+              a.push(project[i]);
+            }
+            return a;
+        });
+      }
 
     const openFile = useCallback((json: Object): void => {
         setFileJSON(json);
@@ -152,6 +164,8 @@ const Chatbot = (): ReactElement => {
                          
                 </Box>
                 <Box flex className="main-container">
+                    <TabBar toolbarProjects={toolbarProjects}
+                    removeToolbarElement={removeToolbarElement}/>
                     <Box flex ref={paperRef} className="paper-container" />
                     {/* <div style={{ display: jsonEditorOpened ? 'initial' : 'none' }}>
                         <JsonEditor content={fileJSON}/>
