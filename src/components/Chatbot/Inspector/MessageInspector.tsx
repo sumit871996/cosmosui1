@@ -81,16 +81,16 @@ const MessageInspector = (props: Props): ReactElement => {
                    value={description}
                    onChange={(e: ChangeEvent<HTMLInputElement>) => changeCellProp(cellProps.description, e.target.value)}
             />
-            <label htmlFor="icon">Icon (Base64)</label>
-            <span className="icon-input"/>
-            <Input id="icon"
+            {/* <label htmlFor="icon">Icon (Base64)</label> */}
+            {/* <span className="icon-input"/> */}
+            {/* <Input id="icon"
                    type="text"
                    placeholder="Enter icon"
                    value={icon}
                    spellCheck={false}
                    onChange={(e: ChangeEvent<HTMLInputElement>) => changeCellProp(cellProps.icon, e.target.value)}
-            />
-            <div className="ports">
+            /> */}
+            {/* <div className="ports">
                 <div className="out-ports-bar">
                     <span>Out Ports</span>
                     <button disabled={!canAddPort}
@@ -111,8 +111,8 @@ const MessageInspector = (props: Props): ReactElement => {
                             </button>
                         </div>
                     );
-                })}
-            </div>
+                })} */}
+            {/* </div> */}
         </>
     );
 };

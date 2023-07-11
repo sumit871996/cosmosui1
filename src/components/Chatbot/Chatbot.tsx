@@ -145,8 +145,8 @@ const Chatbot = (): ReactElement => {
                 <LeftSideBar className="side-bar"
                 addToolbarElement={addToolbarElement}
                 sidebaroptions={dataMigrationOptions}
-                title='Data Migration'
-      />
+                title='Data Migration'/>
+      
                     {/* <div className="toggle-bar">
                         <div onClick={toggleStencil}
                             className={'icon toggle-stencil ' + (!stencilOpened ? 'disabled-icon' : '')}
@@ -160,6 +160,7 @@ const Chatbot = (): ReactElement => {
                     <Box  className="stencil-container" width='100%' ref={stencilRef}
                         style={{ display: stencilOpened ? 'initial' : 'none'}}
                          />
+                         
                             
                          
                 </Box>

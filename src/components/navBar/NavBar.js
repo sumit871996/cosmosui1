@@ -20,16 +20,21 @@ import {
 } from 'grommet-icons';
 
 import { Link, useNavigate } from 'react-router-dom';
-
-import { useContext } from 'react';
+import { getURL } from 'src/utils/commonUtils';
+import { useContext, useState, useEffect } from 'react';
 
 const NavBar = () => {
   const size = useContext(ResponsiveContext);
   const navigate = useNavigate();
+  const [isHome, setIsHome] = useState(true);
 
   const getInitials = () => {
     return 'US';
   };
+
+  useEffect(() => {
+    if (getURL() == '/') setIsHome(false);
+  });
   return (
     <Header
       fill='horizontal'
@@ -98,29 +103,34 @@ const NavBar = () => {
             }}
           />
 
-          <Button
-            alignSelf='center'
-            icon={<Notification color='black' size='medium'></Notification>}
-            onClick={() => navigate('/notifications')}
-          />
-          <Button
-            alignSelf='center'
-            icon={<HelpOption color='black' size='medium'></HelpOption>}
-            onClick={() => navigate('/help')}
-          />
-
+          {isHome && (
+            <Button
+              alignSelf='center'
+              icon={<Notification color='black' size='medium'></Notification>}
+              onClick={() => navigate('/notifications')}
+            />
+          )}
+          {isHome && (
+            <Button
+              alignSelf='center'
+              icon={<HelpOption color='black' size='medium'></HelpOption>}
+              onClick={() => navigate('/help')}
+            />
+          )}
           {/* <Button onClick={() => navigate('/projects')}>
             <Projects color='black' size='medium'></Projects>
           </Button> */}
-          <Avatar
-            alignSelf='center'
-            onClick={() => navigate('/profile')}
-            size='42px'
-            color='black'
-            src={require('../../assets/cosmos/cosmos-final.png')}
-          >
-            {/* {getInitials()} */}
-          </Avatar>
+          {isHome && (
+            <Avatar
+              alignSelf='center'
+              onClick={() => navigate('/profile')}
+              size='42px'
+              color='black'
+              src={require('../../assets/cosmos/icon-16.png')}
+            >
+              {/* {getInitials()} */}
+            </Avatar>
+          )}
         </Box>
       </Box>
     </Header>

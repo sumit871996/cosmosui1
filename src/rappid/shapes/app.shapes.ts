@@ -10,8 +10,9 @@ This Source Code Form is subject to the terms of the JointJS+ Trial License
 file, You can obtain one at https://www.jointjs.com/license
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
 
-
+import BreadCrumb from 'src/components/breadCrumb/BreadCrumb';
 import { util, dia, g, shapes } from '@clientio/rappid';
+import { Icon , Layer} from 'grommet-icons';
 import {
     MAX_PORT_COUNT,
     FONT_FAMILY,
@@ -27,7 +28,9 @@ import {
     LIGHT_COLOR,
     DARK_COLOR,
     MAIN_COLOR,
-    LINE_WIDTH
+    LINE_WIDTH,
+    ENTITY_ICON,
+    MESSAGE_ICON
 } from 'src/theme';
 
 export enum ShapeTypesEnum {
@@ -41,8 +44,8 @@ export enum ShapeTypesEnum {
 const outputPortPosition = (portsArgs: dia.Element.Port[], elBBox: dia.BBox): g.Point[] => {
     const step = OUT_PORT_WIDTH + PADDING_S;
     return portsArgs.map((port: dia.Element.Port, index: number) => new g.Point({
-        x: PADDING_L + OUT_PORT_WIDTH / 2 + index * step,
-        y: elBBox.height
+        x: 271 + index * step,
+        y: elBBox.height-50
     }));
 };
 
@@ -83,39 +86,39 @@ const Base = dia.Element.define(ShapeTypesEnum.BASE, {
 
 
 const Message = Base.define(ShapeTypesEnum.MESSAGE, {
-    size: { width: 368, height: 80 },
+    size: { width: 271, height: 100 },
     ports: {
         groups: {
-            in: {
-                position: {
-                    name: 'manual',
-                    args: {
-                        x: PADDING_L,
-                        y: 0
-                    }
-                },
-                size: {
-                    width: 16,
-                    height: 16
-                },
-                attrs: {
-                    portBody: {
-                        magnet: 'passive',
-                        width: 'calc(w)',
-                        height: 'calc(h)',
-                        y: 'calc(-0.5 * h)',
-                        rx: PORT_BORDER_RADIUS,
-                        ry: PORT_BORDER_RADIUS,
-                        fill: LIGHT_COLOR,
-                        stroke: DARK_COLOR,
-                        strokeWidth: LINE_WIDTH
-                    }
-                },
-                markup: [{
-                    tagName: 'rect',
-                    selector: 'portBody'
-                }]
-            },
+            // in: {
+            //     position: {
+            //         name: 'manual',
+            //         args: {
+            //             x: PADDING_L,
+            //             y: 0
+            //         }
+            //     },
+            //     size: {
+            //         width: 16,
+            //         height: 16
+            //     },
+            //     attrs: {
+            //         portBody: {
+            //             magnet: 'passive',
+            //             width: 'calc(w)',
+            //             height: 'calc(h)',
+            //             y: 'calc(-0.5 * h)',
+            //             rx: PORT_BORDER_RADIUS,
+            //             ry: PORT_BORDER_RADIUS,
+            //             fill: LIGHT_COLOR,
+            //             stroke: DARK_COLOR,
+            //             strokeWidth: LINE_WIDTH
+            //         }
+            //     },
+            //     markup: [{
+            //         tagName: 'rect',
+            //         selector: 'portBody'
+            //     }]
+            // },
             out: {
                 position: outputPortPosition,
                 size: {
@@ -148,27 +151,27 @@ const Message = Base.define(ShapeTypesEnum.MESSAGE, {
                         },
                         x: PADDING_L - OUT_PORT_WIDTH / 2
                     },
-                    portRemoveButton: {
-                        cursor: 'pointer',
-                        event: 'element:port:remove',
-                        transform: `translate(calc(0.5 * w - ${PADDING_L}), 0)`,
-                        dataTooltip: 'Remove Output Port',
-                        dataTooltipPosition: 'top'
-                    },
-                    portRemoveButtonBody: {
-                        width: REMOVE_PORT_SIZE,
-                        height: REMOVE_PORT_SIZE,
-                        x: -REMOVE_PORT_SIZE / 2,
-                        y: -REMOVE_PORT_SIZE / 2,
-                        fill: LIGHT_COLOR,
-                        rx: PORT_BORDER_RADIUS,
-                        ry: PORT_BORDER_RADIUS
-                    },
-                    portRemoveButtonIcon: {
-                        d: 'M -4 -4 4 4 M -4 4 4 -4',
-                        stroke: DARK_COLOR,
-                        strokeWidth: LINE_WIDTH
-                    }
+                    // portRemoveButton: {
+                    //     cursor: 'pointer',
+                    //     event: 'element:port:remove',
+                    //     transform: `translate(calc(0.5 * w - ${PADDING_L}), 0)`,
+                    //     dataTooltip: 'Remove Output Port',
+                    //     dataTooltipPosition: 'top'
+                    // },
+                    // portRemoveButtonBody: {
+                    //     width: REMOVE_PORT_SIZE,
+                    //     height: REMOVE_PORT_SIZE,
+                    //     x: -REMOVE_PORT_SIZE / 2,
+                    //     y: -REMOVE_PORT_SIZE / 2,
+                    //     fill: LIGHT_COLOR,
+                    //     rx: PORT_BORDER_RADIUS,
+                    //     ry: PORT_BORDER_RADIUS
+                    // },
+                    // portRemoveButtonIcon: {
+                    //     d: 'M -4 -4 4 4 M -4 4 4 -4',
+                    //     stroke: DARK_COLOR,
+                    //     strokeWidth: LINE_WIDTH
+                    // }
                 },
                 markup: [{
                     tagName: 'rect',
@@ -189,30 +192,36 @@ const Message = Base.define(ShapeTypesEnum.MESSAGE, {
                 }]
             }
         },
-        items: [{
-            group: 'in'
-        }, {
+        items: [ {
             group: 'out',
             attrs: { portLabel: { text: OUT_PORT_LABEL }}
         }]
     },
     attrs: {
+        horizontalLine:{
+            x1: 25,         // Starting x-coordinate of the line
+            y1: 50,        // Starting y-coordinate of the line
+            x2: 271-25,       // Ending x-coordinate of the line
+            y2: 50,        // Ending y-coordinate of the line
+            stroke: 'gray',     // Stroke color of the line
+            strokeWidth: 1, // Stroke width of the line
+        },
         body: {
             width: 'calc(w)',
             height: 'calc(h)',
             fill: LIGHT_COLOR,
             strokeWidth: LINE_WIDTH / 2,
             stroke: '#D4D4D4',
-            rx: 3,
-            ry: 3,
+            rx: 12,
+            ry: 12,
         },
         label: {
-            x: 54,
-            y: PADDING_L,
+            x: 65,
+            y: PADDING_L+5,
             fontFamily: FONT_FAMILY,
             fontWeight: 600,
             fontSize: 16,
-            fill: '#322A49',
+            fill: '#00567A',
             text: 'Label',
             textWrap: {
                 width: - 54 - PADDING_L,
@@ -222,13 +231,13 @@ const Message = Base.define(ShapeTypesEnum.MESSAGE, {
             textVerticalAnchor: 'top',
         },
         description: {
-            x: 54,
-            y: 38,
+            x: 25,
+            y: 65,
             fontFamily: FONT_FAMILY,
             fontWeight: 400,
             fontSize: 13,
             lineHeight: 13,
-            fill: '#655E77',
+            fill: 'gray',
             textVerticalAnchor: 'top',
             text: 'Description',
             textWrap: {
@@ -240,31 +249,31 @@ const Message = Base.define(ShapeTypesEnum.MESSAGE, {
         icon: {
             width: 20,
             height: 20,
-            x: PADDING_L,
-            y: 24,
-            xlinkHref: 'https://image.flaticon.com/icons/svg/151/151795.svg'
+            x: 25,
+            y: 20,
+            xlinkHref: MESSAGE_ICON
         },
-        portAddButton: {
-            cursor: 'pointer',
-            fill: "0057FF",
-            event: 'element:port:add',
-            transform: 'translate(calc(w - 28), calc(h))',
-            dataTooltip: 'Add Output Port',
-            dataTooltipPosition: 'top'
-        },
-        portAddButtonBody: {
-            width: ADD_PORT_SIZE,
-            height: ADD_PORT_SIZE,
-            rx: PORT_BORDER_RADIUS,
-            ry: PORT_BORDER_RADIUS,
-            x: -ADD_PORT_SIZE / 2,
-            y: -ADD_PORT_SIZE / 2,
-        },
-        portAddButtonIcon: {
-            d: 'M -4 0 4 0 M 0 -4 0 4',
-            stroke: '#FFFFFF',
-            strokeWidth: LINE_WIDTH
-        }
+        // portAddButton: {
+        //     cursor: 'pointer',
+        //     fill: "0057FF",
+        //     event: 'element:port:add',
+        //     transform: 'translate(calc(w - 28), calc(h))',
+        //     dataTooltip: 'Add Output Port',
+        //     dataTooltipPosition: 'top'
+        // },
+        // portAddButtonBody: {
+        //     width: ADD_PORT_SIZE,
+        //     height: ADD_PORT_SIZE,
+        //     rx: PORT_BORDER_RADIUS,
+        //     ry: PORT_BORDER_RADIUS,
+        //     x: -ADD_PORT_SIZE / 2,
+        //     y: -ADD_PORT_SIZE / 2,
+        // },
+        // portAddButtonIcon: {
+        //     d: 'M -4 0 4 0 M 0 -4 0 4',
+        //     stroke: '#FFFFFF',
+        //     strokeWidth: LINE_WIDTH
+        // }
     }
 }, {
 
@@ -272,6 +281,9 @@ const Message = Base.define(ShapeTypesEnum.MESSAGE, {
         tagName: 'rect',
         selector: 'body',
     }, {
+        tagName: 'line',
+        selector: 'horizontalLine',
+    },{
         tagName: 'text',
         selector: 'label',
     }, {
@@ -353,11 +365,13 @@ const FlowchartStart = Base.define(ShapeTypesEnum.FLOWCHART_START, {
             cy: 'calc(0.5 * h)',
             r: 24
         },
+        
         icon: {
             d: 'M 2 8 L 4.29 5.71 L 1.41 2.83 L 2.83 1.41 L 5.71 4.29 L 8 2 L 8 8 Z M -2 8 L -8 8 L -8 2 L -5.71 4.29 L -1 -0.41 L -1 -8 L 1 -8 L 1 0.41 L -4.29 5.71 Z',
             fill: LIGHT_COLOR,
             transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
         },
+        
         label: {
             text: 'Flowchart start',
             textWrap: {
@@ -392,16 +406,17 @@ const FlowchartStart = Base.define(ShapeTypesEnum.FLOWCHART_START, {
     }
 });
 
-const FlowchartEnd = Base.define(ShapeTypesEnum.FLOWCHART_END, {
-    size: { width: 368, height: 80 },
+
+const FlowchartEnd = Base.define(ShapeTypesEnum.MESSAGE, {
+    size: { width: 271, height: 100 },
     ports: {
         groups: {
             in: {
                 position: {
                     name: 'manual',
                     args: {
-                        x: PADDING_L,
-                        y: 0
+                        x: -16/2,
+                        y: 100/2
                     }
                 },
                 size: {
@@ -501,28 +516,33 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.FLOWCHART_END, {
         },
         items: [{
             group: 'in'
-        }, {
-            group: 'out',
-            // attrs: { portLabel: { text: OUT_PORT_LABEL }}
         }]
     },
     attrs: {
+        horizontalLine:{
+            x1: 25,         // Starting x-coordinate of the line
+            y1: 50,        // Starting y-coordinate of the line
+            x2: 271-25,       // Ending x-coordinate of the line
+            y2: 50,        // Ending y-coordinate of the line
+            stroke: 'gray',     // Stroke color of the line
+            strokeWidth: 1, // Stroke width of the line
+        },
         body: {
             width: 'calc(w)',
             height: 'calc(h)',
             fill: LIGHT_COLOR,
             strokeWidth: LINE_WIDTH / 2,
             stroke: '#D4D4D4',
-            rx: 3,
-            ry: 3,
+            rx: 12,
+            ry: 12,
         },
         label: {
-            x: 54,
-            y: PADDING_L,
+            x: 65,
+            y: PADDING_L+5,
             fontFamily: FONT_FAMILY,
             fontWeight: 600,
             fontSize: 16,
-            fill: '#322A49',
+            fill: '#00567A',
             text: 'Label',
             textWrap: {
                 width: - 54 - PADDING_L,
@@ -532,13 +552,13 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.FLOWCHART_END, {
             textVerticalAnchor: 'top',
         },
         description: {
-            x: 54,
-            y: 38,
+            x: 25,
+            y: 65,
             fontFamily: FONT_FAMILY,
             fontWeight: 400,
             fontSize: 13,
             lineHeight: 13,
-            fill: '#655E77',
+            fill: 'gray',
             textVerticalAnchor: 'top',
             text: 'Description',
             textWrap: {
@@ -550,37 +570,47 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.FLOWCHART_END, {
         icon: {
             width: 20,
             height: 20,
-            x: PADDING_L,
-            y: 24,
-            xlinkHref: 'https://image.flaticon.com/icons/svg/151/151795.svg'
+            x: 25,
+            y: 20,
+            xlinkHref: MESSAGE_ICON
+            // markup: <svg aria-label="Layer" viewBox="0 0 24 24" class="StyledIcon-sc-ofa7kd-0 kCyiIT"><path fill="none" stroke="#000" stroke-width="2" d="M1 1h16v16H1V1zm19 6h3v16H7v-3"></path></svg>
+            // component: <BreadCrumb/>,
         },
-        portAddButton: {
-            cursor: 'pointer',
-            fill: MAIN_COLOR,
-            event: 'element:port:add',
-            transform: 'translate(calc(w - 28), calc(h))',
-            dataTooltip: 'Add Output Port',
-            dataTooltipPosition: 'top'
-        },
-        portAddButtonBody: {
-            width: ADD_PORT_SIZE,
-            height: ADD_PORT_SIZE,
-            rx: PORT_BORDER_RADIUS,
-            ry: PORT_BORDER_RADIUS,
-            x: -ADD_PORT_SIZE / 2,
-            y: -ADD_PORT_SIZE / 2,
-        },
-        portAddButtonIcon: {
-            d: 'M -4 0 4 0 M 0 -4 0 4',
-            stroke: '#FFFFFF',
-            strokeWidth: LINE_WIDTH
-        }
+        // icon: {
+        //     d: 'M1 1h16v16H1V1zm19 6h3v16H7v-3',
+        //     fill: LIGHT_COLOR,
+        //     transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
+        // },
+        // portAddButton: {
+        //     cursor: 'pointer',
+        //     fill: MAIN_COLOR,
+        //     event: 'element:port:add',
+        //     transform: 'translate(calc(w - 28), calc(h))',
+        //     dataTooltip: 'Add Output Port',
+        //     dataTooltipPosition: 'top'
+        // },
+        // portAddButtonBody: {
+        //     width: ADD_PORT_SIZE,
+        //     height: ADD_PORT_SIZE,
+        //     rx: PORT_BORDER_RADIUS,
+        //     ry: PORT_BORDER_RADIUS,
+        //     x: -ADD_PORT_SIZE / 2,
+        //     y: -ADD_PORT_SIZE / 2,
+        // },
+        // portAddButtonIcon: {
+        //     d: 'M -4 0 4 0 M 0 -4 0 4',
+        //     stroke: '#FFFFFF',
+        //     strokeWidth: LINE_WIDTH
+        // }
     }
 }, {
 
     markup: [{
         tagName: 'rect',
         selector: 'body',
+    },{
+        tagName: 'line',
+        selector: 'horizontalLine',
     }, {
         tagName: 'text',
         selector: 'label',
@@ -638,7 +668,7 @@ export const Link = dia.Link.define(ShapeTypesEnum.LINK, {
         line: {
             fill: 'none',
             connection: true,
-            stroke: DARK_COLOR,
+            stroke: '#17EBA0',
             strokeWidth: LINE_WIDTH
         },
         wrapper: {
@@ -648,18 +678,18 @@ export const Link = dia.Link.define(ShapeTypesEnum.LINK, {
             strokeWidth: 10
         },
         arrowhead: {
-            d: 'M -5 -2.5 0 0 -5 2.5 Z',
-            stroke: DARK_COLOR,
-            fill: DARK_COLOR,
-            atConnectionRatio: 0.55,
+            d: 'M -15 -7.5 0 0 -15 7.5',
+            stroke: '#17EBA0',
+            fill: 'none',
+            atConnectionRatio: 1,
             strokeWidth: LINE_WIDTH
         }
     },
     labels: [{
         attrs: {
-            labelText: {
-                text: 'Label',
-            }
+            // labelText: {
+            //     text: 'Label',
+            // }
         },
         position: {
             distance: 0.25
@@ -694,7 +724,7 @@ export const Link = dia.Link.define(ShapeTypesEnum.LINK, {
                     ellipsis: true
                 },
                 cursor: 'pointer',
-                fill: DARK_COLOR,
+                fill: '#17EBA0',
                 textAnchor: 'middle',
                 textVerticalAnchor: 'middle',
                 pointerEvents: 'none'

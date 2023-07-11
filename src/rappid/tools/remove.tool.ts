@@ -24,7 +24,7 @@ export const RemoveTool = elementTools.Remove.extend({
             selector: 'button',
             attributes: {
                 'r': 10,
-                'fill': '#FD0B88',
+                'fill': 'black',
                 'cursor': 'pointer',
                 'data-tooltip': 'Remove <i>(Del)</i>',
                 'data-tooltip-position': 'bottom'

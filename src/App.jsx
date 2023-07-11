@@ -10,10 +10,12 @@ import AppRoutes from './routes/AppRoutes';
 import { AppFooter } from './components/footer/AppFooter';
 import NavBar from './components/navBar/NavBar';
 import { useContext } from 'react';
+import convertToSVG from './utils/convertToSVG';
 const App = () => {
     return (
         <Grommet theme={hpe} full>
       {/* <Box height='100vh'> */}
+ 
         <NavBar />
         <Box flex>
           <AppRoutes />

@@ -33,10 +33,12 @@ const LeftSideBar = (props) => {
       width='100%'
       border='all'
       height='100%'
+      gap='medium'
     >
       <Box
         align='start'
         width='100%'
+        height='100%'
         pad={{ horizontal: 'small', vertical: 'xsmall' }}
       >
         <Button

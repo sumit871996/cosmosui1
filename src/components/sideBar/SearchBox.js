@@ -42,7 +42,7 @@ export const SearchBox = ({ ...props }) => {
   };
 
   return (
-    <Box fill='horizontal' height='30px' pad={{ top: '40px', bottom: '40px' }}>
+    <Box fill='horizontal' height='30px' pad={{ top: '20px', bottom: '20px' }}>
       <StyledTextInput
         icon={<SearchIcon id='search-icon' style={{ justifyItems: 'start' }} />}
         placeholder={props.placeholder}

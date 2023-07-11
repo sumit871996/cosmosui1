@@ -86,6 +86,7 @@ const RightSideBar = (props) => {
       <Box
         align='center'
         direction='row-responsive'
+        margin={{ top: 'medium' }}
         pad={{ horizontal: 'xsmall', vertical: 'xsmall' }}
       >
         <CatalogOption color='#00567A' />
