@@ -113,7 +113,7 @@ const LoginPage = () => {
               align={!['xsmall', 'small'].includes(size) ? 'start' : undefined}
               margin={{ top: 'medium', bottom: 'small' }}
             >
-              <Button primary color='#00567A' type='submit' label='Sign In' />
+              <Button primary type='submit' label='Sign In' />
             </Box>
           </Form>
         </Box>

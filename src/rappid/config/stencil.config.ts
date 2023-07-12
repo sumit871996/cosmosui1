@@ -35,6 +35,13 @@ export const stencilConfig = {
             }
         },
         {
+            name: 'FlowchartStart',
+            attrs: {
+                label: { text: 'Transformation' },
+                icon: { xlinkHref: USER_INPUT_ICON }
+            }
+        },
+        {
             name: 'FlowchartEnd',
             attrs: {
                 label: { text: 'Destination' },

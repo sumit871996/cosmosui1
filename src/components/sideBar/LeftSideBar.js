@@ -26,7 +26,7 @@ const LeftSideBar = (props) => {
 
   return (
     <Box
-      // className='side-bar'
+      className='stencil-container'
       align='start'
       round='none'
       // width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
@@ -64,6 +64,9 @@ const LeftSideBar = (props) => {
           setSuggestions={setSuggestions}
         />
       </Box>
+      {/* <Box className='side-bar' border='all'> */}
+      {props.children}
+      {/* </Box> */}
 
       {/* <LeftSideBarElement
         options={'Source 1'}

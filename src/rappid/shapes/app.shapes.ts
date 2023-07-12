@@ -30,7 +30,8 @@ import {
     MAIN_COLOR,
     LINE_WIDTH,
     ENTITY_ICON,
-    MESSAGE_ICON
+    MESSAGE_ICON,
+    CLOSE_ICON
 } from 'src/theme';
 
 export enum ShapeTypesEnum {
@@ -332,77 +333,259 @@ const Message = Base.define(ShapeTypesEnum.MESSAGE, {
     }
 });
 
-const FlowchartStart = Base.define(ShapeTypesEnum.FLOWCHART_START, {
-    size: { width: 48, height: 48 },
+const FlowchartStart = Base.define(ShapeTypesEnum.MESSAGE, {
+    size: { width: 271, height: 100 },
     ports: {
         groups: {
-            out: {
-                position: { name: 'bottom' },
-                attrs: {
-                    portBody: {
-                        fill: DARK_COLOR,
-                        stroke: BACKGROUND_COLOR,
-                        strokeWidth: 6,
-                        paintOrder: 'stroke',
-                        magnet: 'active',
-                        r: 'calc(0.5 * d)',
+            in: {
+                position: {
+                    name: 'manual',
+                    args: {
+                        x: -16/2,
+                        y: 100/2
                     }
                 },
-                size: { width: 10, height: 10 },
+                size: {
+                    width: 16,
+                    height: 16
+                },
+                attrs: {
+                    portBody: {
+                        magnet: 'passive',
+                        width: 'calc(w)',
+                        height: 'calc(h)',
+                        y: 'calc(-0.5 * h)',
+                        rx: PORT_BORDER_RADIUS,
+                        ry: PORT_BORDER_RADIUS,
+                        fill: LIGHT_COLOR,
+                        stroke: DARK_COLOR,
+                        strokeWidth: LINE_WIDTH
+                    }
+                },
                 markup: [{
-                    tagName: 'circle',
+                    tagName: 'rect',
                     selector: 'portBody'
+                }]
+            },
+            out: {
+                position: outputPortPosition,
+                size: {
+                    width: OUT_PORT_WIDTH,
+                    height: OUT_PORT_HEIGHT
+                },
+                attrs: {
+                    portBody: {
+                        magnet: 'active',
+                        width: 'calc(w)',
+                        height: 'calc(h)',
+                        x: 'calc(-0.5 * w)',
+                        y: 'calc(-0.5 * h)',
+                        fill: DARK_COLOR,
+                        ry: PORT_BORDER_RADIUS,
+                        rx: PORT_BORDER_RADIUS
+                    },
+                    portLabel: {
+                        pointerEvents: 'none',
+                        fontFamily: FONT_FAMILY,
+                        fontWeight: 400,
+                        fontSize: 13,
+                        fill: LIGHT_COLOR,
+                        textAnchor: 'start',
+                        textVerticalAnchor: 'middle',
+                        textWrap: {
+                            width: - REMOVE_PORT_SIZE - PADDING_L - PADDING_S,
+                            maxLineCount: 1,
+                            ellipsis: true
+                        },
+                        x: PADDING_L - OUT_PORT_WIDTH / 2
+                    },
+                    // portRemoveButton: {
+                    //     cursor: 'pointer',
+                    //     event: 'element:port:remove',
+                    //     transform: `translate(calc(0.5 * w - ${PADDING_L}), 0)`,
+                    //     dataTooltip: 'Remove Output Port',
+                    //     dataTooltipPosition: 'top'
+                    // },
+                    // portRemoveButtonBody: {
+                    //     width: REMOVE_PORT_SIZE,
+                    //     height: REMOVE_PORT_SIZE,
+                    //     x: -REMOVE_PORT_SIZE / 2,
+                    //     y: -REMOVE_PORT_SIZE / 2,
+                    //     fill: LIGHT_COLOR,
+                    //     rx: PORT_BORDER_RADIUS,
+                    //     ry: PORT_BORDER_RADIUS
+                    // },
+                    // portRemoveButtonIcon: {
+                    //     d: 'M -4 -4 4 4 M -4 4 4 -4',
+                    //     stroke: DARK_COLOR,
+                    //     strokeWidth: LINE_WIDTH
+                    // }
+                },
+                markup: [{
+                    tagName: 'rect',
+                    selector: 'portBody'
+                }, {
+                    tagName: 'text',
+                    selector: 'portLabel',
+                }, {
+                    tagName: 'g',
+                    selector: 'portRemoveButton',
+                    children: [{
+                        tagName: 'rect',
+                        selector: 'portRemoveButtonBody'
+                    }, {
+                        tagName: 'path',
+                        selector: 'portRemoveButtonIcon'
+                    }]
                 }]
             }
         },
-        items: [{ group: 'out' }]
+        items: [{
+            group: 'in'
+        },
+        {
+            group: 'out'
+        }]
     },
     attrs: {
+        
+        horizontalLine:{
+            x1: 25,         // Starting x-coordinate of the line
+            y1: 50,        // Starting y-coordinate of the line
+            x2: 271-25,       // Ending x-coordinate of the line
+            y2: 50,        // Ending y-coordinate of the line
+            stroke: 'gray',     // Stroke color of the line
+            strokeWidth: 1, // Stroke width of the line
+        },
         body: {
-            fill: MAIN_COLOR,
-            stroke: 'none',
-            cx: 'calc(0.5 * w)',
-            cy: 'calc(0.5 * h)',
-            r: 24
-        },
-        
-        icon: {
-            d: 'M 2 8 L 4.29 5.71 L 1.41 2.83 L 2.83 1.41 L 5.71 4.29 L 8 2 L 8 8 Z M -2 8 L -8 8 L -8 2 L -5.71 4.29 L -1 -0.41 L -1 -8 L 1 -8 L 1 0.41 L -4.29 5.71 Z',
+            width: 'calc(w)',
+            height: 'calc(h)',
             fill: LIGHT_COLOR,
-            transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
+            strokeWidth: LINE_WIDTH / 2,
+            stroke: '#D4D4D4',
+            rx: 12,
+            ry: 12,
         },
-        
         label: {
-            text: 'Flowchart start',
+            x: 65,
+            y: PADDING_L+5,
+            fontFamily: FONT_FAMILY,
+            fontWeight: 600,
+            fontSize: 16,
+            fill: '#00567A',
+            text: 'Label',
             textWrap: {
-                width: 200,
-                height: 100,
+                width: - 54 - PADDING_L,
+                maxLineCount: 1,
                 ellipsis: true
             },
-            x: 'calc(0.5 * w)',
-            y: -PADDING_L,
-            textAnchor: 'middle',
-            textVerticalAnchor: 'bottom',
-            fill: '#55627B',
+            textVerticalAnchor: 'top',
+        },
+        description: {
+            x: 25,
+            y: 65,
             fontFamily: FONT_FAMILY,
-            fontSize: 13
-        }
+            fontWeight: 400,
+            fontSize: 13,
+            lineHeight: 13,
+            fill: 'gray',
+            textVerticalAnchor: 'top',
+            text: 'Description',
+            textWrap: {
+                width: - 54 - PADDING_L,
+                maxLineCount: 2,
+                ellipsis: true
+            }
+        },
+        icon: {
+            width: 20,
+            height: 20,
+            x: 25,
+            y: 20,
+            xlinkHref: MESSAGE_ICON
+            // markup: <svg aria-label="Layer" viewBox="0 0 24 24" class="StyledIcon-sc-ofa7kd-0 kCyiIT"><path fill="none" stroke="#000" stroke-width="2" d="M1 1h16v16H1V1zm19 6h3v16H7v-3"></path></svg>
+            // component: <BreadCrumb/>,
+        },
+        // icon: {
+        //     d: 'M1 1h16v16H1V1zm19 6h3v16H7v-3',
+        //     fill: LIGHT_COLOR,
+        //     transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
+        // },
+        // portAddButton: {
+        //     cursor: 'pointer',
+        //     fill: MAIN_COLOR,
+        //     event: 'element:port:add',
+        //     transform: 'translate(calc(w - 28), calc(h))',
+        //     dataTooltip: 'Add Output Port',
+        //     dataTooltipPosition: 'top'
+        // },
+        // portAddButtonBody: {
+        //     width: ADD_PORT_SIZE,
+        //     height: ADD_PORT_SIZE,
+        //     rx: PORT_BORDER_RADIUS,
+        //     ry: PORT_BORDER_RADIUS,
+        //     x: -ADD_PORT_SIZE / 2,
+        //     y: -ADD_PORT_SIZE / 2,
+        // },
+        // portAddButtonIcon: {
+        //     d: 'M -4 0 4 0 M 0 -4 0 4',
+        //     stroke: '#FFFFFF',
+        //     strokeWidth: LINE_WIDTH
+        // }
     }
 }, {
     markup: [{
-        tagName: 'circle',
-        selector: 'body'
-    }, {
-        tagName: 'path',
-        selector: 'icon'
+        tagName: 'rect',
+        selector: 'body',
+    },{
+        tagName: 'line',
+        selector: 'horizontalLine',
     }, {
         tagName: 'text',
-        selector: 'label'
+        selector: 'label',
+    }, {
+        tagName: 'text',
+        selector: 'description',
+    }, {
+        tagName: 'image',
+        selector: 'icon',
+    }, {
+        tagName: 'g',
+        selector: 'portAddButton',
+        children: [{
+            tagName: 'rect',
+            selector: 'portAddButtonBody'
+        }, {
+            tagName: 'path',
+            selector: 'portAddButtonIcon'
+        }]
     }],
+
     boundaryPadding: {
         horizontal: PADDING_L,
-        top: PADDING_S,
-        bottom: PADDING_L
+        top: PADDING_L,
+        bottom: OUT_PORT_HEIGHT / 2 + PADDING_L
+    },
+
+    addDefaultPort: function() {
+        if (!this.canAddPort('out')) return;
+        this.addPort({
+            group: 'out',
+            attrs: { portLabel: { text: OUT_PORT_LABEL }}
+        });
+    },
+
+    canAddPort: function(group: string): boolean {
+        return Object.keys(this.getGroupPorts(group)).length < MAX_PORT_COUNT;
+    },
+
+    toggleAddPortButton: function(group: string): void {
+        const buttonAttributes = this.canAddPort(group)
+            ? { fill: MAIN_COLOR, cursor: 'pointer' }
+            : { fill: '#BEBEBE', cursor: 'not-allowed' };
+        this.attr(['portAddButton'], buttonAttributes, {
+            dry: true /* to be ignored by the Command Manager */
+        });
     }
 });
 
@@ -519,6 +702,7 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.MESSAGE, {
         }]
     },
     attrs: {
+        
         horizontalLine:{
             x1: 25,         // Starting x-coordinate of the line
             y1: 50,        // Starting y-coordinate of the line
@@ -604,7 +788,6 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.MESSAGE, {
         // }
     }
 }, {
-
     markup: [{
         tagName: 'rect',
         selector: 'body',
@@ -660,7 +843,8 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.MESSAGE, {
     }
 });
 
-export const Link = dia.Link.define(ShapeTypesEnum.LINK, {
+export const Link = dia.Link.define(ShapeTypesEnum.LINK, 
+    {
     attrs: {
         root: {
             cursor: 'pointer'
@@ -669,7 +853,8 @@ export const Link = dia.Link.define(ShapeTypesEnum.LINK, {
             fill: 'none',
             connection: true,
             stroke: '#17EBA0',
-            strokeWidth: LINE_WIDTH
+            strokeWidth: LINE_WIDTH,
+            d: 'M 0 0 C 0 0 40 0 40 0 60 0 60 30 60 30'
         },
         wrapper: {
             fill: 'none',

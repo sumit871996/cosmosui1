@@ -16,8 +16,10 @@ import exampleGraphJSON from 'src/rappid/config/example-graph.json';
 import LeftSideBar from '../sideBar/LeftSideBar';
 import { FormClose } from 'grommet-icons';
 import TabBar from '../dashboardWindows/TabBar';
-
-const Chatbot = (): ReactElement => {
+interface ChatbotProps {
+    window: string
+  }
+const Chatbot = (props: ChatbotProps): ReactElement => {
 
     const elementRef = useRef(null);
     const toolbarRef = useRef(null);
@@ -135,6 +137,7 @@ const Chatbot = (): ReactElement => {
             rappid.destroy();
         };
     }, [rappid, subscriptions]);
+        
 
     return (
 
@@ -142,10 +145,16 @@ const Chatbot = (): ReactElement => {
             <Box ref={elementRef} direction='row' className="rappid-scope chatbot">
                 <Box ref={toolbarRef} ></Box>
                 <Box className="side-bar" width='20%'>
-                <LeftSideBar className="side-bar"
-                addToolbarElement={addToolbarElement}
-                sidebaroptions={dataMigrationOptions}
-                title='Data Migration'/>
+                <LeftSideBar
+        addToolbarElement={addToolbarElement}
+        sidebaroptions={dataMigrationOptions}
+        title={props.window}
+      >
+        <Box className="stencil-container" width='100%' ref={stencilRef}
+                        style={{ display: stencilOpened ? 'initial' : 'none'}}
+                         />
+      </LeftSideBar>
+      
       
                     {/* <div className="toggle-bar">
                         <div onClick={toggleStencil}
@@ -157,9 +166,9 @@ const Chatbot = (): ReactElement => {
                             data-tooltip="Toggle JSON Editor"
                             data-tooltip-position-selector=".toggle-bar" />
                     </div> */}
-                    <Box  className="stencil-container" width='100%' ref={stencilRef}
+                    {/* <Box  className="stencil-container" width='100%' ref={stencilRef}
                         style={{ display: stencilOpened ? 'initial' : 'none'}}
-                         />
+                         /> */}
                          
                             
                          

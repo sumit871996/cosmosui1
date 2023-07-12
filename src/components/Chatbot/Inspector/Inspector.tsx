@@ -22,7 +22,8 @@ const Inspector = (): ReactElement => {
 
     useEffect(() => {
         subscriptions.add(
-            eventBusService.on(SharedEvents.SELECTION_CHANGED, (selection: dia.Cell[]) => setSelection(selection))
+            eventBusService.on(SharedEvents.SELECTION_CHANGED, 
+                (selection: dia.Cell[]) => setSelection(selection))
         );
         return () => {
             subscriptions.unsubscribe();
@@ -63,9 +64,10 @@ const Inspector = (): ReactElement => {
 
         
             cell ? (<div className={'chatbot-inspector ' + (!cell ? 'disabled-chatbot-inspector' : '')}>
-            {
+            {/* {
                 cell ? chooseInspector() : emptyInspector()
-            }
+            } */}
+            {chooseInspector()}
         </div>) : (null)
         
     );

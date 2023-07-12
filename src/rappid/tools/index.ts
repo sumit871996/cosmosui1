@@ -28,15 +28,15 @@ export function addElementTools(elementView: dia.ElementView): void {
     const padding = element.getBoundaryPadding();
     const toolsView = new dia.ToolsView({
         tools: [
-            new elementTools.Boundary({
-                useModelGeometry: true,
-                padding
-            }),
+            // new elementTools.Boundary({
+            //     useModelGeometry: true,
+            //     padding
+            // }),
             new RemoveTool({
                 x: '100%',
                 offset: {
-                    x: padding.right,
-                    y: -padding.top
+                    x: -padding.right-20,
+                    y: padding.top+10
                 }
             })
         ]
