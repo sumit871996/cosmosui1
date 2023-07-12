@@ -1,20 +1,19 @@
-import { React } from 'react';
-import { Box, Button, Grid } from 'grommet';
-import CardDashboard from '../../cards/CardDashboard';
-import aimlCardElements from './aimlCardElements';
+import { React, useContext } from "react";
+import { Box, Button, Grid, ResponsiveContext } from "grommet";
+import CardDashboard from "../../cards/CardDashboard";
+import aimlCardElements from "./aimlCardElements";
+import HorizontalTimeLine from "./HorizontalTimeLine";
+import LeftSideBar from "./LeftSideBar";
 const AimlDashboard = () => {
+  const size = useContext(ResponsiveContext);
   return (
-    <Box fill='horizontal'>
-      <Grid pad='4%' columns='small' rows='auto' gap='large' fill='horizontal'>
-        {aimlCardElements.map((el) => (
-          <CardDashboard
-            title={el.title}
-            logo={el.logo}
-            description={el.description}
-            dashboardType='AIML'
-          />
-        ))}
-      </Grid>
+    <Box fill="horizontal" direction="row">
+      <Box>
+        <LeftSideBar />
+      </Box>
+      <Box fill="horizontal">
+        <HorizontalTimeLine></HorizontalTimeLine>
+      </Box>
     </Box>
   );
 };
