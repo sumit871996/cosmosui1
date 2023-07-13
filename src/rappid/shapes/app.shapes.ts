@@ -31,7 +31,9 @@ import {
     LINE_WIDTH,
     ENTITY_ICON,
     MESSAGE_ICON,
-    CLOSE_ICON
+    CLOSE_ICON,
+    USER_INPUT_ICON,
+    CONFIRMATION_ICON
 } from 'src/theme';
 
 export enum ShapeTypesEnum {
@@ -502,7 +504,7 @@ const FlowchartStart = Base.define(ShapeTypesEnum.MESSAGE, {
             height: 20,
             x: 25,
             y: 20,
-            xlinkHref: MESSAGE_ICON
+            xlinkHref: CONFIRMATION_ICON
             // markup: <svg aria-label="Layer" viewBox="0 0 24 24" class="StyledIcon-sc-ofa7kd-0 kCyiIT"><path fill="none" stroke="#000" stroke-width="2" d="M1 1h16v16H1V1zm19 6h3v16H7v-3"></path></svg>
             // component: <BreadCrumb/>,
         },

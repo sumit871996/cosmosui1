@@ -23,13 +23,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getURL } from 'src/utils/commonUtils';
 import { useContext, useState, useEffect } from 'react';
 
-const NavBar = () => {
+const NavBar = (props) => {
   const size = useContext(ResponsiveContext);
   const navigate = useNavigate();
   const [isHome, setIsHome] = useState(true);
-
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
   const getInitials = () => {
     return 'US';
+  };
+
+  const openProfilePopup = (event) => {
+    event.preventDefault();
+    props.onOpenProfilePopup();
+    // console.log("Prop button pressed");
+    // setShowProfilePopup(true);
+    // localStorage.removeItem("user_id");
+    // localStorage.removeItem("user_email");
+    // navigate("/");
+  };
+
+  const closeProfilePopup = () => {
+    setShowProfilePopup(false);
   };
 
   useEffect(() => {
@@ -122,13 +136,13 @@ const NavBar = () => {
           </Button> */}
           {isHome && (
             <Avatar
+              background='#00739D'
               alignSelf='center'
-              onClick={() => navigate('/profile')}
+              onClick={(e) => openProfilePopup(e)}
               size='42px'
               color='black'
-              src={require('../../assets/cosmos/icon-16.png')}
             >
-              {/* {getInitials()} */}
+              {props.initials()}
             </Avatar>
           )}
         </Box>

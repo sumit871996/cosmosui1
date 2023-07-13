@@ -36,31 +36,29 @@ const DataMigrationWindow = () => {
     });
     console.log(toolbarProjects.splice(-1, 1));
   };
-  const [show, setShow] = useState();
+  const [show, setShow] = useState(false);
 
   const changeShow = () => {
-    setShow((status) => {
-      return !status;
-    });
+    setTimeout(() => {
+      setShow((status) => !status);
+    }, 5000);
   };
 
   const navi = () => {
     navigate('/Data/Data Transformation');
   };
   return (
-    <Box direction='row-responsive' fill='horizontal' flex height='70vh'>
+    <Box direction='row-responsive' fill='horizontal' flex height='85vh'>
       <Box direction='column' justify='center' align='center' flex>
-        <Box height='100vh' className='chatbot'>
-          <Chatbot window='Data Migration' />
+        <Box className='chatbot'>
+          <Chatbot
+            proceed
+            show={show}
+            changeShow={changeShow}
+            flex
+            window='Data Migration'
+          />
         </Box>
-        <Button
-          label='Proceed'
-          primary
-          onClick={() => {
-            setShow(true);
-            // navi();
-          }}
-        />
         {show && (
           <Layer
             position='center'
@@ -89,17 +87,17 @@ const DataMigrationWindow = () => {
                     <Text>Migration Details</Text>
                   </Box>
                   <Box>
-                    <Box direction='row' gap='medium'>
-                      <Text weight='bold'>Source 1</Text> <Text>Target 1</Text>
+                    <Box direction='row-responsive' gap='medium'>
+                      <Text weight='bold'>Source</Text> <Text>Source 1</Text>
                     </Box>
-                    <Box direction='row' gap='medium'>
-                      <Text weight='bold'>Source 2</Text> <Text>Target 2</Text>
+                    <Box direction='row-responsive' gap='medium'>
+                      <Text weight='bold'>Target</Text> <Text>Target 1</Text>
                     </Box>
                   </Box>
                   <Box
                     background='#17EBA03D'
                     style={{ borderRadius: '10px' }}
-                    direction='row'
+                    direction='row-responsive'
                     gap='small'
                     pad='xsmall'
                     fill='horizontal'
@@ -121,13 +119,13 @@ const DataMigrationWindow = () => {
                       </Text>
                     </Box>
                   </Box>
-                  <Box direction='row' gap='xsmall'>
+                  <Box direction='row-responsive' gap='xsmall'>
                     <Text>Do you want to proceed for</Text>
                     <Text weight='bold' color='black'>
                       Data Transformation?
                     </Text>
                   </Box>
-                  <Box direction='row' gap='small'>
+                  <Box direction='row-responsive' gap='small'>
                     <Button
                       label='Proceed'
                       primary
@@ -145,7 +143,7 @@ const DataMigrationWindow = () => {
         )}
       </Box>
 
-      <RightSideBar />
+      <RightSideBar window='Data Migration' />
     </Box>
   );
 };

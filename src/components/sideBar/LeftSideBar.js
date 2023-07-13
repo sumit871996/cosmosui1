@@ -1,4 +1,4 @@
-import { Box, ResponsiveContext, Button, Text } from 'grommet';
+import { Box, ResponsiveContext, Button, Text, Card } from 'grommet';
 import { useContext, useState, React } from 'react';
 import { SearchBox } from './SearchBox';
 import { useNavigate } from 'react-router-dom';
@@ -26,29 +26,40 @@ const LeftSideBar = (props) => {
 
   return (
     <Box
-      className='stencil-container'
+      // className='stencil-container'
+      height='100%'
       align='start'
-      round='none'
+      // round='none'
       // width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
       width='100%'
       border='all'
-      height='100%'
-      gap='medium'
     >
       <Box
         align='start'
         width='100%'
-        height='100%'
-        pad={{ horizontal: 'small', vertical: 'xsmall' }}
+        pad={{ horizontal: 'xsmall', vertical: 'xsmall' }}
       >
-        <Button
+        <Box
+          direction='row-responsive'
           gap='small'
-          label='Back'
-          icon={<Previous />}
-          onClick={() => {
-            navigate('/data/dashboard');
-          }}
-        />
+          justify={props.proceed ? 'around' : 'start'}
+          align='center'
+          fill='horizontal'
+          margin={{ bottom: 'small' }}
+        >
+          <Button
+            gap='small'
+            label='Back'
+            icon={<Previous />}
+            onClick={() => {
+              navigate('/data/dashboard');
+            }}
+          />
+          {props.proceed && (
+            <Button label='Proceed' primary onClick={props.changeShow} />
+          )}
+        </Box>
+
         <Box>
           <Text color='black' weight='bold' size='large'>
             {props.title}
@@ -65,6 +76,7 @@ const LeftSideBar = (props) => {
         />
       </Box>
       {/* <Box className='side-bar' border='all'> */}
+
       {props.children}
       {/* </Box> */}
 

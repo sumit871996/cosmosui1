@@ -130,9 +130,11 @@ export function importGraphFromJSON(service: RappidService, json: any): void {
 
 // Stencil
 
-export function loadStencilShapes(service: RappidService): void {
+export function loadStencilShapes(service: RappidService, window: string): void {
     const { stencil } = service;
     const stencilShapes = stencilConfig.shapes.map(shape => new shapes.stencil[shape.name](shape));
+    if(window == 'Data Migration')
+    stencilShapes.splice(1,1)
     stencil.load(stencilShapes);
 }
 

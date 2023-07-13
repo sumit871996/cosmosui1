@@ -13,6 +13,7 @@ import { rightSideBarOptions } from '../../config/rightSideBarOptions/rightSideB
 import { SearchBox } from './SearchBox';
 import { useNavigate } from 'react-router-dom';
 import { Previous, Next, CatalogOption, Folder, FormDown } from 'grommet-icons';
+import SettingsWindow from './SettingsWindow';
 
 const RightSideBar = (props) => {
   const navigate = useNavigate();
@@ -36,106 +37,88 @@ const RightSideBar = (props) => {
     { label: 'Logout' },
   ];
   return (
-    <Box
-      align='start'
-      round='none'
-      width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
-      border='all'
-      height='100%'
-      fill='vertical'
-    >
+    <Box align='start' round='none' border='all' height='100%' fill='vertical'>
       <Box
         align='start'
         width='100%'
-        pad={{ horizontal: 'small', vertical: 'xsmall' }}
+        pad={{ horizontal: 'small', vertical: 'medium' }}
+        flex
       >
-        <Box fill='horizontal' direction='row-responsive' justify='between'>
-          <Button
-            width={
-              !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
-            }
-            height='30px'
-            justify='center'
-            alignSelf='center'
-            label='Solution'
-            onClick={() => {
-              changeButton('Solution');
-            }}
-            active={selectedButton == 'Solution' ? true : false}
-          />
-          <Button
-            width={
-              !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
-            }
-            height='30px'
-            justify='center'
-            alignSelf='center'
-            label='Team'
-            onClick={() => {
-              changeButton('Team');
-            }}
-            active={selectedButton == 'Team' ? true : false}
+        <Box width='100%'>
+          <Box fill='horizontal' direction='row-responsive' justify='between'>
+            <Button
+              width={
+                !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
+              }
+              height='30px'
+              justify='center'
+              alignSelf='center'
+              label='Solution'
+              onClick={() => {
+                changeButton('Solution');
+              }}
+              active={selectedButton == 'Solution' ? true : false}
+            />
+            <Button
+              width={
+                !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
+              }
+              height='30px'
+              justify='center'
+              alignSelf='center'
+              label='Team'
+              onClick={() => {
+                changeButton('Team');
+              }}
+              active={selectedButton == 'Team' ? true : false}
+            />
+          </Box>
+          <SearchBox
+            placeholder='Search'
+            // suggestions={rightSideBarOptions}
+            // setSuggestions={setSuggestions}
           />
         </Box>
-        <SearchBox
-          placeholder='Search'
-          // suggestions={rightSideBarOptions}
-          // setSuggestions={setSuggestions}
+        <Box gap='xsmall' align='center' direction='row-responsive'>
+          <CatalogOption color='#00567A' />
+          <Box
+            onClick={() => {}}
+            flex
+            align='center'
+            fill='horizontal'
+            pad={{ left: 'xsmall' }}
+          >
+            <Text color='#00567A'>Project.params</Text>
+          </Box>
+        </Box>
+        <Box
+          gap='xsmall'
+          onClick={() => {}}
+          align='center'
+          direction='row-responsive'
+        >
+          <Folder color='#00567A' />
+          <Box flex align='center' fill='horizontal' pad={{ left: 'xsmall' }}>
+            <Text color='#00567A'>Connection managers</Text>
+          </Box>
+        </Box>
+        <Menu
+          label='Packages'
+          color='#00567A'
+          // dropAlign='bottom: "right" | "right"'
+          items={[
+            {
+              label: (
+                <Box style={{ color: '#00567A' }} alignSelf='center'>
+                  Create packages
+                </Box>
+              ),
+            },
+          ]}
         />
       </Box>
-      <Box
-        align='center'
-        direction='row-responsive'
-        margin={{ top: 'medium' }}
-        pad={{ horizontal: 'xsmall', vertical: 'xsmall' }}
-      >
-        <CatalogOption color='#00567A' />
-        <Box
-          onClick={() => {}}
-          flex
-          align='center'
-          fill='horizontal'
-          pad={{ left: 'xsmall' }}
-        >
-          <Text color='#00567A'>Project.params</Text>
-        </Box>
-      </Box>
-      <Box
-        onClick={() => {}}
-        align='center'
-        direction='row-responsive'
-        pad={{ horizontal: 'xsmall', vertical: 'xsmall' }}
-      >
-        <Folder color='#00567A' />
-        <Box flex align='center' fill='horizontal' pad={{ left: 'xsmall' }}>
-          <Text color='#00567A'>Connection managers</Text>
-        </Box>
-      </Box>
-      <Menu
-        label='Packages'
-        color='#00567A'
-        // dropAlign='bottom: "right" | "right"'
-        items={[
-          {
-            label: (
-              <Box style={{ color: '#00567A' }} alignSelf='center'>
-                Create packages
-              </Box>
-            ),
-          },
-        ]}
-      />
-      {/* {rightSideBarOptions.map((element) => {
-        return ( */}
-      {/* <RightSideBarElement
-            options={element.name}
-            selected={selected}
-            setSelected={setSelected}
-          >
-            {element.logo}
-          </RightSideBarElement> */}
-      {/* );
-      })} */}
+
+      {props.window == 'Data Transformation' && <SettingsWindow />}
     </Box>
   );
 };

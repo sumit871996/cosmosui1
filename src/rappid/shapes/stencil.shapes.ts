@@ -43,9 +43,11 @@ const FlowchartStart = dia.Element.define(ShapeTypesEnum.FLOWCHART_START, {
             r: 'calc(0.5 * w)',
         },
         icon: {
-            d: 'M 2 8 L 4.29 5.71 L 1.41 2.83 L 2.83 1.41 L 5.71 4.29 L 8 2 L 8 8 Z M -2 8 L -8 8 L -8 2 L -5.71 4.29 L -1 -0.41 L -1 -8 L 1 -8 L 1 0.41 L -4.29 5.71 Z',
-            fill: '#FFFFFF',
-            transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
+            width: 20,
+            height: 20,
+            x: 'calc(0.5 * w - 10)',
+            y: 'calc(0.5 * h - 10)',
+            xlinkHref: MESSAGE_ICON
         },
         label: {
             text: 'Start',
@@ -63,7 +65,7 @@ const FlowchartStart = dia.Element.define(ShapeTypesEnum.FLOWCHART_START, {
         tagName: 'circle',
         selector: 'body'
     }, {
-        tagName: 'path',
+        tagName: 'image',
         selector: 'icon'
     }, {
         tagName: 'text',

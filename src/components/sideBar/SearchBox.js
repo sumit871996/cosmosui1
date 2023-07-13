@@ -1,5 +1,5 @@
 // SearchExample.js
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import { TextInput, Box } from 'grommet';
 import { Search as SearchIcon } from 'grommet-icons';
@@ -14,7 +14,7 @@ const StyledTextInput = styled(TextInput).attrs(() => ({
 }))``;
 
 export const SearchBox = ({ ...props }) => {
-  const [value, setValue] = React.useState();
+  const [value, setValue] = useState();
   const searchSuggestions = props.suggestions;
   // const [suggestions, setSuggestions] = React.useState(
   //   searchSuggestions.slice(0, 5)
@@ -42,7 +42,7 @@ export const SearchBox = ({ ...props }) => {
   };
 
   return (
-    <Box fill='horizontal' height='30px' pad={{ top: '20px', bottom: '20px' }}>
+    <Box fill='horizontal' pad={{ top: '20px', bottom: '20px' }}>
       <StyledTextInput
         icon={<SearchIcon id='search-icon' style={{ justifyItems: 'start' }} />}
         placeholder={props.placeholder}
