@@ -76,6 +76,7 @@ function onGraphStopBatch(service: RappidService, batchName: string): void {
 
 function onCellAdd(service: RappidService, cell: dia.Cell): void {
     if (cell.isLink()) return;
+    console.log("hii")
     actions.setSelection(service, [cell]);
     actions.updateLinksRouting(service);
 }

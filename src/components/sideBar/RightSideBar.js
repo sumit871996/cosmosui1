@@ -13,6 +13,7 @@ import { rightSideBarOptions } from '../../config/rightSideBarOptions/rightSideB
 import { SearchBox } from './SearchBox';
 import { useNavigate } from 'react-router-dom';
 import { Previous, Next, CatalogOption, Folder, FormDown } from 'grommet-icons';
+import SettingsWindow from './SettingsWindow';
 
 const RightSideBar = (props) => {
   const navigate = useNavigate();
@@ -37,26 +38,28 @@ const RightSideBar = (props) => {
   ];
   return (
     <Box
+      // overflow={{ vertical: 'scroll' }}
       align='start'
       round='none'
-      width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
       border='all'
-      height='100%'
-      fill='vertical'
+      // height='100%'
+      // fill='vertical'
+      // width='300px'
+      // pad={{ horizontal: 'small', vertical: 'medium' }}
     >
       <Box
         align='start'
         width='100%'
-        pad={{ horizontal: 'small', vertical: 'xsmall' }}
+        // flex
+        pad={{ horizontal: 'small', vertical: 'small' }}
       >
-        <Box fill='horizontal' direction='row-responsive' justify='between'>
+        <Box
+          gap='small'
+          fill='horizontal'
+          direction='row-responsive'
+          justify='between'
+        >
           <Button
-            width={
-              !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
-            }
-            height='30px'
-            justify='center'
-            alignSelf='center'
             label='Solution'
             onClick={() => {
               changeButton('Solution');
@@ -64,12 +67,6 @@ const RightSideBar = (props) => {
             active={selectedButton == 'Solution' ? true : false}
           />
           <Button
-            width={
-              !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
-            }
-            height='30px'
-            justify='center'
-            alignSelf='center'
             label='Team'
             onClick={() => {
               changeButton('Team');
@@ -82,59 +79,46 @@ const RightSideBar = (props) => {
           // suggestions={rightSideBarOptions}
           // setSuggestions={setSuggestions}
         />
-      </Box>
-      <Box
-        align='center'
-        direction='row-responsive'
-        pad={{ horizontal: 'xsmall', vertical: 'xsmall' }}
-      >
-        <CatalogOption color='#00567A' />
+
         <Box
+          margin={{ bottom: 'xsmall' }}
+          gap='xsmall'
           onClick={() => {}}
-          flex
           align='center'
-          fill='horizontal'
-          pad={{ left: 'xsmall' }}
+          justify='start'
+          direction='row-responsive'
         >
+          <CatalogOption onClick={() => {}} color='#00567A' />
           <Text color='#00567A'>Project.params</Text>
         </Box>
-      </Box>
-      <Box
-        onClick={() => {}}
-        align='center'
-        direction='row-responsive'
-        pad={{ horizontal: 'xsmall', vertical: 'xsmall' }}
-      >
-        <Folder color='#00567A' />
-        <Box flex align='center' fill='horizontal' pad={{ left: 'xsmall' }}>
+        <Box
+          margin={{ bottom: 'xsmall' }}
+          gap='xsmall'
+          onClick={() => {}}
+          align='center'
+          justify='start'
+          direction='row-responsive'
+        >
+          <Folder onClick={() => {}} color='#00567A' />
           <Text color='#00567A'>Connection managers</Text>
         </Box>
+        <Menu
+          label='Packages'
+          color='#00567A'
+          // dropAlign='bottom: "right" | "right"'
+          items={[
+            {
+              label: (
+                <Box style={{ color: '#00567A' }} alignSelf='center'>
+                  Create packages
+                </Box>
+              ),
+            },
+          ]}
+        />
       </Box>
-      <Menu
-        label='Packages'
-        color='#00567A'
-        // dropAlign='bottom: "right" | "right"'
-        items={[
-          {
-            label: (
-              <Box style={{ color: '#00567A' }} alignSelf='center'>
-                Create packages
-              </Box>
-            ),
-          },
-        ]}
-      />
-      {/* {rightSideBarOptions.map((element) => {
-        return ( */}
-      {/* <RightSideBarElement
-            options={element.name}
-            selected={selected}
-            setSelected={setSelected}
-          >
-            {element.logo}
-          </RightSideBarElement> */}
-      {/* );
-      })} */}
+
+      {props.window == 'Data Transformation' && <SettingsWindow />}
     </Box>
   );
 };

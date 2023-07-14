@@ -1,4 +1,4 @@
-import { Box, ResponsiveContext, Button, Text } from 'grommet';
+import { Box, ResponsiveContext, Button, Text, Card } from 'grommet';
 import { useContext, useState, React } from 'react';
 import { SearchBox } from './SearchBox';
 import { useNavigate } from 'react-router-dom';
@@ -25,29 +25,42 @@ const LeftSideBar = (props) => {
   };
 
   return (
-    <Box
-      // className='side-bar'
-      align='start'
-      round='none'
-      // width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
-      width='100%'
-      border='all'
-      height='100%'
-    >
+    <Box fill='vertical' align='start' border='all'>
       <Box
         align='start'
         width='100%'
-        pad={{ horizontal: 'small', vertical: 'xsmall' }}
+        // fill='vertical'
+        pad={{ horizontal: 'small', vertical: 'small' }}
       >
-        <Button
-          gap='small'
-          label='Back'
-          icon={<Previous />}
-          onClick={() => {
-            navigate('/data/dashboard');
-          }}
-        />
-        <Box>
+        <Box
+          direction='row-responsive'
+          // gap='small'
+          justify={props.proceed ? 'between' : 'start'}
+          align='center'
+          fill='horizontal'
+          margin={{ bottom: 'small' }}
+        >
+          <Button
+            size='medium'
+            gap='small'
+            label='Back'
+            icon={<Previous />}
+            onClick={() => {
+              navigate('/data/dashboard');
+            }}
+          />
+          {props.proceed && (
+            <Button
+              size='medium'
+              gap='small'
+              label='Proceed'
+              primary
+              onClick={props.changeShow}
+            />
+          )}
+        </Box>
+
+        <Box fill='horizontal'>
           <Text color='black' weight='bold' size='large'>
             {props.title}
           </Text>
@@ -62,6 +75,9 @@ const LeftSideBar = (props) => {
           setSuggestions={setSuggestions}
         />
       </Box>
+      {/* <Box className='side-bar' border='all'> */}
+      <Box className='chatbot side-bar'>{props.children}</Box>
+      {/* </Box> */}
 
       {/* <LeftSideBarElement
         options={'Source 1'}

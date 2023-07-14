@@ -20,16 +20,35 @@ import {
 } from 'grommet-icons';
 
 import { Link, useNavigate } from 'react-router-dom';
+import { getURL } from 'src/utils/commonUtils';
+import { useContext, useState, useEffect } from 'react';
 
-import { useContext } from 'react';
-
-const NavBar = () => {
+const NavBar = (props) => {
   const size = useContext(ResponsiveContext);
   const navigate = useNavigate();
-
+  const [isHome, setIsHome] = useState(true);
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
   const getInitials = () => {
     return 'US';
   };
+
+  const openProfilePopup = (event) => {
+    event.preventDefault();
+    props.onOpenProfilePopup();
+    // console.log("Prop button pressed");
+    // setShowProfilePopup(true);
+    // localStorage.removeItem("user_id");
+    // localStorage.removeItem("user_email");
+    // navigate("/");
+  };
+
+  const closeProfilePopup = () => {
+    setShowProfilePopup(false);
+  };
+
+  useEffect(() => {
+    if (getURL() == '/') setIsHome(false);
+  });
   return (
     <Header
       fill='horizontal'
@@ -98,29 +117,34 @@ const NavBar = () => {
             }}
           />
 
-          <Button
-            alignSelf='center'
-            icon={<Notification color='black' size='medium'></Notification>}
-            onClick={() => navigate('/notifications')}
-          />
-          <Button
-            alignSelf='center'
-            icon={<HelpOption color='black' size='medium'></HelpOption>}
-            onClick={() => navigate('/help')}
-          />
-
+          {isHome && (
+            <Button
+              alignSelf='center'
+              icon={<Notification color='black' size='medium'></Notification>}
+              onClick={() => navigate('/notifications')}
+            />
+          )}
+          {isHome && (
+            <Button
+              alignSelf='center'
+              icon={<HelpOption color='black' size='medium'></HelpOption>}
+              onClick={() => navigate('/help')}
+            />
+          )}
           {/* <Button onClick={() => navigate('/projects')}>
             <Projects color='black' size='medium'></Projects>
           </Button> */}
-          <Avatar
-            alignSelf='center'
-            onClick={() => navigate('/profile')}
-            size='42px'
-            color='black'
-            src={require('../../assets/cosmos/cosmos-final.png')}
-          >
-            {/* {getInitials()} */}
-          </Avatar>
+          {isHome && (
+            <Avatar
+              background='#00739D'
+              alignSelf='center'
+              onClick={(e) => openProfilePopup(e)}
+              size='42px'
+              color='black'
+            >
+              {props.initials()}
+            </Avatar>
+          )}
         </Box>
       </Box>
     </Header>

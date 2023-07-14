@@ -39,6 +39,7 @@ const ToolBar = () => {
         />
         {toolbarElemnts.map((el) => (
           <Button
+            key={el.title}
             active={ctx.selectedDashboard == el.title}
             weight='bold'
             color='black'

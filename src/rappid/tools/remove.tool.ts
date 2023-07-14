@@ -23,8 +23,8 @@ export const RemoveTool = elementTools.Remove.extend({
             tagName: 'circle',
             selector: 'button',
             attributes: {
-                'r': 10,
-                'fill': '#FD0B88',
+                'r': 30,
+                'fill': 'transparent',
                 'cursor': 'pointer',
                 'data-tooltip': 'Remove <i>(Del)</i>',
                 'data-tooltip-position': 'bottom'
@@ -33,11 +33,12 @@ export const RemoveTool = elementTools.Remove.extend({
             tagName: 'path',
             selector: 'icon',
             attributes: {
-                'd': 'M -4 -4 4 4 M -4 4 4 -4',
+                'd': 'M -9 -9 9 9 M -9 9 9 -9',
                 'fill': 'none',
-                'stroke': '#FFFFFF',
+                'stroke': 'black',
                 'stroke-width': 2,
-                'pointer-events': 'none'
+                'pointer-events': 'none',
+                // transform: 'translate(-55, 45)'
             }
         }]
     }

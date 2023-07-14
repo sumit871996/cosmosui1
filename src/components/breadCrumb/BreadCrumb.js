@@ -30,7 +30,7 @@ const BreadCrumb = (props) => {
     <Box
       pad={{ left: 'small' }}
       height='40px'
-      direction='row'
+      direction='row-responsive'
       style={{ borderBottom: '1px solid' }}
     >
       {!props.expandStatus && (

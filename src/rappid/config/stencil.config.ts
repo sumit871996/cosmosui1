@@ -15,6 +15,7 @@ import {
     CONFIRMATION_ICON,
     ENTITY_ICON,
     MESSAGE_ICON,
+    TARGET_ICON,
     USER_INPUT_ICON
 } from 'src/theme';
 
@@ -30,14 +31,21 @@ export const stencilConfig = {
             name: 'Message',
             attrs: {
                 label: { text: 'Source' },
-                icon: { xlinkHref: USER_INPUT_ICON }
+                icon: { xlinkHref: MESSAGE_ICON }
+            }
+        },
+        {
+            name: 'FlowchartStart',
+            attrs: {
+                label: { text: 'Transformation' },
+                icon: { xlinkHref: ENTITY_ICON }
             }
         },
         {
             name: 'FlowchartEnd',
             attrs: {
                 label: { text: 'Destination' },
-                icon: { xlinkHref: ENTITY_ICON }
+                icon: { xlinkHref: TARGET_ICON }
             }
         },
         // {

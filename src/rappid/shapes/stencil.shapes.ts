@@ -20,6 +20,7 @@ import {
     LIGHT_COLOR,
     MAIN_COLOR,
     MESSAGE_ICON,
+    ENTITY_ICON,
 } from 'src/theme';
 
 export enum ShapeTypesEnum {
@@ -42,9 +43,11 @@ const FlowchartStart = dia.Element.define(ShapeTypesEnum.FLOWCHART_START, {
             r: 'calc(0.5 * w)',
         },
         icon: {
-            d: 'M 2 8 L 4.29 5.71 L 1.41 2.83 L 2.83 1.41 L 5.71 4.29 L 8 2 L 8 8 Z M -2 8 L -8 8 L -8 2 L -5.71 4.29 L -1 -0.41 L -1 -8 L 1 -8 L 1 0.41 L -4.29 5.71 Z',
-            fill: '#FFFFFF',
-            transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
+            width: 20,
+            height: 20,
+            x: 'calc(0.5 * w - 10)',
+            y: 'calc(0.5 * h - 10)',
+            xlinkHref: MESSAGE_ICON
         },
         label: {
             text: 'Start',
@@ -62,7 +65,7 @@ const FlowchartStart = dia.Element.define(ShapeTypesEnum.FLOWCHART_START, {
         tagName: 'circle',
         selector: 'body'
     }, {
-        tagName: 'path',
+        tagName: 'image',
         selector: 'icon'
     }, {
         tagName: 'text',
@@ -82,9 +85,11 @@ const FlowchartEnd = dia.Element.define(ShapeTypesEnum.FLOWCHART_END, {
             r: 'calc(0.5 * w)'
         },
         icon: {
-            d: 'M 5 -8.45 L 6.41 -7.04 L 3 -3.635 L 1.59 -5.04 Z M -4.5 3.95 L -1 3.95 L -1 -1.63 L -6.41 -7.04 L -5 -8.45 L 1 -2.45 L 1 3.95 L 4.5 3.95 L 0 8.45 Z',
-            fill: '#212121',
-            transform: 'translate(calc(0.5 * w), calc(0.5 * h))'
+            width: 20,
+            height: 20,
+            x: 'calc(0.5 * w - 10)',
+            y: 'calc(0.5 * h - 10)',
+            xlinkHref: MESSAGE_ICON
         },
         label: {
             text: 'End',
@@ -102,7 +107,7 @@ const FlowchartEnd = dia.Element.define(ShapeTypesEnum.FLOWCHART_END, {
         tagName: 'circle',
         selector: 'body'
     }, {
-        tagName: 'path',
+        tagName: 'image',
         selector: 'icon'
     }, {
         tagName: 'text',
