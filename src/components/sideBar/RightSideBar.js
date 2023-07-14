@@ -37,70 +37,70 @@ const RightSideBar = (props) => {
     { label: 'Logout' },
   ];
   return (
-    <Box align='start' round='none' border='all' height='100%' fill='vertical'>
+    <Box
+      // overflow={{ vertical: 'scroll' }}
+      align='start'
+      round='none'
+      border='all'
+      // height='100%'
+      // fill='vertical'
+      // width='300px'
+      // pad={{ horizontal: 'small', vertical: 'medium' }}
+    >
       <Box
         align='start'
         width='100%'
-        pad={{ horizontal: 'small', vertical: 'medium' }}
-        flex
+        // flex
+        pad={{ horizontal: 'small', vertical: 'small' }}
       >
-        <Box width='100%'>
-          <Box fill='horizontal' direction='row-responsive' justify='between'>
-            <Button
-              width={
-                !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
-              }
-              height='30px'
-              justify='center'
-              alignSelf='center'
-              label='Solution'
-              onClick={() => {
-                changeButton('Solution');
-              }}
-              active={selectedButton == 'Solution' ? true : false}
-            />
-            <Button
-              width={
-                !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
-              }
-              height='30px'
-              justify='center'
-              alignSelf='center'
-              label='Team'
-              onClick={() => {
-                changeButton('Team');
-              }}
-              active={selectedButton == 'Team' ? true : false}
-            />
-          </Box>
-          <SearchBox
-            placeholder='Search'
-            // suggestions={rightSideBarOptions}
-            // setSuggestions={setSuggestions}
+        <Box
+          gap='small'
+          fill='horizontal'
+          direction='row-responsive'
+          justify='between'
+        >
+          <Button
+            label='Solution'
+            onClick={() => {
+              changeButton('Solution');
+            }}
+            active={selectedButton == 'Solution' ? true : false}
+          />
+          <Button
+            label='Team'
+            onClick={() => {
+              changeButton('Team');
+            }}
+            active={selectedButton == 'Team' ? true : false}
           />
         </Box>
-        <Box gap='xsmall' align='center' direction='row-responsive'>
-          <CatalogOption color='#00567A' />
-          <Box
-            onClick={() => {}}
-            flex
-            align='center'
-            fill='horizontal'
-            pad={{ left: 'xsmall' }}
-          >
-            <Text color='#00567A'>Project.params</Text>
-          </Box>
-        </Box>
+        <SearchBox
+          placeholder='Search'
+          // suggestions={rightSideBarOptions}
+          // setSuggestions={setSuggestions}
+        />
+
         <Box
+          margin={{ bottom: 'xsmall' }}
           gap='xsmall'
           onClick={() => {}}
           align='center'
+          justify='start'
           direction='row-responsive'
         >
-          <Folder color='#00567A' />
-          <Box flex align='center' fill='horizontal' pad={{ left: 'xsmall' }}>
-            <Text color='#00567A'>Connection managers</Text>
-          </Box>
+          <CatalogOption onClick={() => {}} color='#00567A' />
+          <Text color='#00567A'>Project.params</Text>
+        </Box>
+        <Box
+          margin={{ bottom: 'xsmall' }}
+          gap='xsmall'
+          onClick={() => {}}
+          align='center'
+          justify='start'
+          direction='row-responsive'
+        >
+          <Folder onClick={() => {}} color='#00567A' />
+          <Text color='#00567A'>Connection managers</Text>
         </Box>
         <Menu
           label='Packages'

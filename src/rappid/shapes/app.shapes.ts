@@ -427,9 +427,6 @@ const FlowchartStart = Base.define(ShapeTypesEnum.MESSAGE, {
                     tagName: 'rect',
                     selector: 'portBody'
                 }, {
-                    tagName: 'text',
-                    selector: 'portLabel',
-                }, {
                     tagName: 'g',
                     selector: 'portRemoveButton',
                     children: [{
@@ -626,13 +623,13 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.MESSAGE, {
                     selector: 'portBody'
                 }]
             },
-            out: {
-                position: outputPortPosition,
-                size: {
-                    width: OUT_PORT_WIDTH,
-                    height: OUT_PORT_HEIGHT
-                },
-                attrs: {
+            // out: {
+            //     position: outputPortPosition,
+            //     size: {
+            //         width: OUT_PORT_WIDTH,
+            //         height: OUT_PORT_HEIGHT
+            //     },
+            //     attrs: {
                     // portBody: {
                     //     magnet: 'active',
                     //     width: 'calc(w)',
@@ -679,25 +676,25 @@ const FlowchartEnd = Base.define(ShapeTypesEnum.MESSAGE, {
                     //     stroke: DARK_COLOR,
                     //     strokeWidth: LINE_WIDTH
                     // }
-                },
-                markup: [{
-                    tagName: 'rect',
-                    selector: 'portBody'
-                }, {
-                    tagName: 'text',
-                    selector: 'portLabel',
-                }, {
-                    tagName: 'g',
-                    selector: 'portRemoveButton',
-                    children: [{
-                        tagName: 'rect',
-                        selector: 'portRemoveButtonBody'
-                    }, {
-                        tagName: 'path',
-                        selector: 'portRemoveButtonIcon'
-                    }]
-                }]
-            }
+            //     },
+            //     markup: [{
+            //         tagName: 'rect',
+            //         selector: 'portBody'
+            //     }, {
+            //         tagName: 'text',
+            //         selector: 'portLabel',
+            //     }, {
+            //         tagName: 'g',
+            //         selector: 'portRemoveButton',
+            //         children: [{
+            //             tagName: 'rect',
+            //             selector: 'portRemoveButtonBody'
+            //         }, {
+            //             tagName: 'path',
+            //             selector: 'portRemoveButtonIcon'
+            //         }]
+            //     }]
+            // }
         },
         items: [{
             group: 'in'

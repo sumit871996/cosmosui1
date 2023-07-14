@@ -25,29 +25,23 @@ const LeftSideBar = (props) => {
   };
 
   return (
-    <Box
-      // className='stencil-container'
-      height='100%'
-      align='start'
-      // round='none'
-      // width={!['xsmall', 'small', 'medium'].includes(size) ? '16vw' : '150px'}
-      width='100%'
-      border='all'
-    >
+    <Box fill='vertical' align='start' border='all'>
       <Box
         align='start'
         width='100%'
-        pad={{ horizontal: 'xsmall', vertical: 'xsmall' }}
+        // fill='vertical'
+        pad={{ horizontal: 'small', vertical: 'small' }}
       >
         <Box
           direction='row-responsive'
-          gap='small'
-          justify={props.proceed ? 'around' : 'start'}
+          // gap='small'
+          justify={props.proceed ? 'between' : 'start'}
           align='center'
           fill='horizontal'
           margin={{ bottom: 'small' }}
         >
           <Button
+            size='medium'
             gap='small'
             label='Back'
             icon={<Previous />}
@@ -56,11 +50,17 @@ const LeftSideBar = (props) => {
             }}
           />
           {props.proceed && (
-            <Button label='Proceed' primary onClick={props.changeShow} />
+            <Button
+              size='medium'
+              gap='small'
+              label='Proceed'
+              primary
+              onClick={props.changeShow}
+            />
           )}
         </Box>
 
-        <Box>
+        <Box fill='horizontal'>
           <Text color='black' weight='bold' size='large'>
             {props.title}
           </Text>
@@ -76,8 +76,7 @@ const LeftSideBar = (props) => {
         />
       </Box>
       {/* <Box className='side-bar' border='all'> */}
-
-      {props.children}
+      <Box className='chatbot side-bar'>{props.children}</Box>
       {/* </Box> */}
 
       {/* <LeftSideBarElement

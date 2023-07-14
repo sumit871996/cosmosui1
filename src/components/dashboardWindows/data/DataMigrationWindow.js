@@ -13,7 +13,7 @@ import { dataMigrationOptions } from '../../../config/dataMigrationOptions';
 import JointPage from '../../../pages/JointPage';
 import LeftSideBar from '../../sideBar/LeftSideBar';
 import RightSideBar from '../../sideBar/RightSideBar';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import DashboardContext from '../../../pages/dashboards/DashboardContext';
 import { Close, FormClose } from 'grommet-icons';
 import { useNavigate } from 'react-router-dom';
@@ -37,28 +37,31 @@ const DataMigrationWindow = () => {
     console.log(toolbarProjects.splice(-1, 1));
   };
   const [show, setShow] = useState(false);
-
+  // console.log(window.innerHeight);
   const changeShow = () => {
     setTimeout(() => {
       setShow((status) => !status);
     }, 5000);
   };
-
+  // useEffect(() => {
+  //   console.log(size);
+  // }, [size]);
   const navi = () => {
     navigate('/Data/Data Transformation');
   };
   return (
-    <Box direction='row-responsive' fill='horizontal' flex height='85vh'>
+    <Box direction='row-responsive' fill='horizontal' height='150vh'>
       <Box direction='column' justify='center' align='center' flex>
-        <Box className='chatbot'>
-          <Chatbot
-            proceed
-            show={show}
-            changeShow={changeShow}
-            flex
-            window='Data Migration'
-          />
-        </Box>
+        <Chatbot
+          proceed
+          show={show}
+          changeShow={changeShow}
+          flex
+          justify='center'
+          window='Data Migration'
+          align='center'
+        />
+
         {show && (
           <Layer
             position='center'

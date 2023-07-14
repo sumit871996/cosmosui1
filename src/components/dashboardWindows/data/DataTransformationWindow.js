@@ -26,7 +26,7 @@ const DataTransformationWindow = () => {
   const ctx = useContext(DashboardContext);
   const size = useContext(ResponsiveContext);
   return (
-    <Box direction='row-responsive' fill='horizontal' flex height='85vh'>
+    <Box direction='row-responsive' fill='horizontal' height='150vh'>
       <Box direction='column' justify='center' align='center' flex>
         <Box className='chatbot'>
           <Chatbot window='Data Transformation' />
@@ -114,7 +114,7 @@ const DataTransformationWindow = () => {
           </Layer>
         )}
       </Box>
-      <RightSideBar window='Data Transformation' />{' '}
+      <RightSideBar window='Data Transformation' />
     </Box>
   );
 };

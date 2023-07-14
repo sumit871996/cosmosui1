@@ -76,7 +76,8 @@ const Chatbot = (props: ChatbotProps): ReactElement => {
 
   const onStart = useCallback((): void => {
     loadStencilShapes(rappid, props.window);
-    openFile(exampleGraphJSON);
+    if (localStorage.json) openFile(JSON.parse(localStorage.json));
+    else openFile(exampleGraphJSON);
   }, [rappid, openFile]);
 
   const onJsonEditorChange = useCallback(
@@ -90,6 +91,7 @@ const Chatbot = (props: ChatbotProps): ReactElement => {
 
   const onRappidGraphChange = useCallback((json: Object): void => {
     setFileJSON(json);
+    localStorage.setItem('json', JSON.stringify(json));
   }, []);
 
   const onStencilToggle = useCallback((): void => {
@@ -173,7 +175,7 @@ const Chatbot = (props: ChatbotProps): ReactElement => {
         className='rappid-scope chatbot'
       >
         <Box ref={toolbarRef}></Box>
-        <Box height='100%' className='side-bar' width='100%'>
+        <Box className='side-bar' width='100%'>
           <LeftSideBar
             proceed={props.proceed}
             show={props.show}
@@ -183,13 +185,22 @@ const Chatbot = (props: ChatbotProps): ReactElement => {
             title={props.window}
           >
             <Box
-              flex
               className='stencil-container'
               width='100%'
               ref={stencilRef}
-              style={{ display: stencilOpened ? 'initial' : 'none' }}
+              style={{
+                display: stencilOpened ? 'initial' : 'none',
+              }}
             />
           </LeftSideBar>
+          {/* <Box
+            className='stencil-container'
+            width='100%'
+            ref={stencilRef}
+            style={{
+              display: stencilOpened ? 'initial' : 'none',
+            }}
+          /> */}
           {/* <div className="toggle-bar">
                         <div onClick={toggleStencil}
                             className={'icon toggle-stencil ' + (!stencilOpened ? 'disabled-icon' : '')}
@@ -210,9 +221,9 @@ const Chatbot = (props: ChatbotProps): ReactElement => {
             removeToolbarElement={removeToolbarElement}
           />
           <Box flex ref={paperRef} className='paper-container' />
-          {/* <div style={{ display: jsonEditorOpened ? 'initial' : 'none' }}>
-                        <JsonEditor content={fileJSON}/>
-                    </div> */}
+          <div style={{ display: jsonEditorOpened ? 'initial' : 'none' }}>
+            <JsonEditor content={fileJSON} />
+          </div>
         </Box>
 
         <Inspector />
