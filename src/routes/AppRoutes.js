@@ -10,6 +10,7 @@ import DataDashboard from "../components/dashboardWindows/data/DataDashboard";
 import AimlDashboard from "../components/dashboardWindows/aiml/AimlDashboard";
 import DataExploration from "src/components/dashboardWindows/aiml/DataExploration";
 import JointPage from "../pages/JointPage";
+import IdentifyTheDataTypes from "src/components/dashboardWindows/aiml/IdentifyTheDataTypes";
 
 const AppRoutes = () => {
   return (
@@ -65,7 +66,7 @@ const AppRoutes = () => {
         element={
           <Dashboard>
             <AimlDashboard>
-              {/* <IdentifyTheDataTypes></IdentifyTheDataTypes> */}
+              <IdentifyTheDataTypes></IdentifyTheDataTypes>
             </AimlDashboard>
           </Dashboard>
         }
