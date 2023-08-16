@@ -87,7 +87,7 @@ const LoginPage = () => {
               <TextInput
                 id='email-sign-in'
                 name='email'
-                placeholder='example@domain.com'
+                placeholder='example1@domain.com'
                 type='email'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
