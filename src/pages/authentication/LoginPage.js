@@ -26,7 +26,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const handleLogin = (event) => {
     event.preventDefault();
-    if (username === 'hpeuser@cosmos.com' && password === 'hpe') {
+    if (username === 'hpe@com' && password === 'hpe') {
       // set login state to local storage
       sessionStorage.setItem('user', username); // store the user in seesion storage.
       // navigate to another page
