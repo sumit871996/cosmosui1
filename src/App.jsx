@@ -37,7 +37,7 @@ const handleprop = () => {
       {/* <Box height='100%' overflow={{vertical:'scroll'}}> */}
  
         <NavBar initials={getInitials} selectedButton={selectedButton} setSelectedHandle={setSelectedButton} onOpenProfilePopup={handleprop} />
-          <Box>Testing</Box>
+          
         <Box flex>
           <AppRoutes />
         </Box>
